@@ -15,9 +15,9 @@ La falta de herramientas didácticas atractivas que ayuden a niños del Trastorn
 [Breve descripción de la solución IoT propuesta]
 
 ### Estado del Proyecto
-- **Versión actual:** v3.0
-- **Última actualización:** [Fecha]
-- **Estado:** Prototipo final
+- **Versión actual:** v1.0
+- **Última actualización:** 28/09/2026
+- **Estado:** Prototipo inicial
 
 ---
 
