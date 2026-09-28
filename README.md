@@ -12,8 +12,7 @@
 La falta de herramientas didácticas atractivas que ayuden a niños del Trastorno del Espectro Autista, ante crisis provocadas por desregulación del ruido ambiental que supere el umbral de tolerancia acústica del alumno.
 
 ### Descripción del Proyecto
-[Breve descripción de la solución IoT propuesta]
-
+La solución loT propuesta consiste en un sistema integrado de detección acústica y comunicación audio visual silenciosa, compuesto por dos unidades interconectadas; el módulo del estudiante y módulo principal de la pizarra. El sistema opera bajo una lógica de doble entrada (Híbrida: Automática + Manual), orientada a prevenir desregulaciones sin emitir ruidos adicionales: un módulo central ubicado junto a la pizarra utiliza un micrófono de precisión para medir en tiempo real el nivel de ruido del aula, filtrando sonidos esporádicos y  encendiendo automáticamente una luz tenue  de aviso en la pizarra cuando al intensidad; esta respetando el umbral (luz verde), esta pronto a superarlo (luz amarilla) y cuando se encuentra por sobre él (luz roja). En paralelo el estudiante dispone el su escritorio de un botón táctil ergonómico interconectado que le permite encender manualmente la misma luz de la pizarra en cualquier momento si experimenta sobrecarga o angustia sensorial antes de alcanzarse dicho umbral. Al activarse la alerta visual por cualquiera de las dos vías, el docente identifica de forma inmediata y silenciosa la necesidad de bajar el volumen o tono de voz del grupo e intervenir pedagógicamente, reanudandose el estado normal del indicador una vez que el ambiente retorna a los niveles de confort acústico.
 ### Estado del Proyecto
 - **Versión actual:** v1.0
 - **Última actualización:** 28/09/2026
