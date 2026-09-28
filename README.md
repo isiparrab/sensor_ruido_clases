@@ -5,8 +5,11 @@
   - Isidora Vidal
   - Florencia Gutiérrez
   
-- **ODS Seleccionado:** [Número y nombre]
-- **Problema a resolver:** [Descripción breve]
+- **ODS Seleccionado:**
+- Número 04: Educación de Calidad
+- Número 10: Reducción de Desigualdades
+- **Problema a resolver:** 
+La falta de herramientas didácticas atractivas que ayuden a niños del Trastorno del Espectro Autista, ante crisis provocadas por desregulación del ruido ambiental que supere el umbral de tolerancia acústica del alumno.
 
 ### Descripción del Proyecto
 [Breve descripción de la solución IoT propuesta]
