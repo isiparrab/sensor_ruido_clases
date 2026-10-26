@@ -1,38 +1,26 @@
 # Bill of Materials (BOM)
 
-## Formato del Archivo
+# Lista de Materiales (BOM) y Pines
 
-El archivo BOM debe incluir las siguientes columnas:
+## Módulo central (pizarra)
+| Componente | Cant. | Conexión |
+|---|---|---|
+| ESP32 DevKit | 1 | — |
+| Sensor de sonido KY-038 | 1 | AO → GPIO 34 |
+| LED RGB #1 semáforo (cátodo común) | 1 | R→25, G→26, B→27, "-"→GND |
+| LED RGB #2 luz blanca (cátodo común) | 1 | R→12, G→13, B→14, "-"→GND |
 
-| Columna | Descripción | Ejemplo |
-|---------|-------------|---------|
-| Cantidad | Número de unidades | 1 |
-| Componente | Nombre descriptivo | ESP32 DevKit V1 |
-| Especificación | Detalles técnicos | 30 pines, WiFi+BT |
-| Fabricante | Marca del componente | Espressif |
-| Código/SKU | Identificador único | ESP32-WROOM-32 |
-| Proveedor | Tienda/distribuidor | AliExpress, MercadoLibre |
-| Precio Unitario | Costo por unidad (CLP) | $8,990 |
-| Precio Total | Cantidad × Precio | $8,990 |
-| Datasheet | Link a especificaciones | [URL] |
+## Módulo del estudiante (botón)
+| Componente | Cant. | Conexión |
+|---|---|---|
+| ESP32-C3 SuperMini | 1 | — |
+| Pulsador | 1 | GPIO 4 y GND (pull-up interno) |
+| LED de confirmación | — | LED integrado (GPIO 8, activo en LOW) |
 
----
+## Encapsulado
+| Pieza | Cant. | Material |
+|---|---|---|
+| Carcasa semáforo | 1 | Impresión 3D (PLA) |
+| Carcasa botón | 1 | Impresión 3D (PLA) |
 
-## Archivos a Incluir
-
-- `bom_completo.xlsx` - Lista completa de materiales
-- `bom_completo.pdf` - Versión PDF para visualización
-- `datasheets/` - Carpeta con PDFs de componentes críticos
-
----
-
-## Presupuesto Total
-
-**Costo Total Estimado:** $[XXXXX] CLP
-
-### Desglose por Categoría
-- Microcontrolador: $X,XXX
-- Sensores: $X,XXX
-- Actuadores: $X,XXX
-- Estructura/Encapsulado: $X,XXX
-- Otros: $X,XXX
+## Presupuesto Total 0
