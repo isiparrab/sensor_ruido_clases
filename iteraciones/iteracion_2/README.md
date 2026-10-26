@@ -18,23 +18,11 @@
 1. **Dependencia del hotspot de un celular:** el sistema dependía de un iPhone. Ahora el ESP32 crea su propia red (modo Access Point).
 2. **Presiones del botón perdidas o lentas:** había que apretar varias veces. Las causas eran el ahorro de energía del WiFi, la antena débil de la placa mini y presiones mientras la placa estaba ocupada. Se desactivó el ahorro de energía, se ajustó la potencia de transmisión y el botón ahora usa una interrupción.
 
-## Próximos pasos (v3)
-- Conectar el sistema a una red y guardar los datos en una base de datos para relacionarlos con días, bloques de clase, profesores y tener un backgorund de los alumnos.
-
-
----
 
 ## Fotos del Prototipo v2
 
-Incluir en esta carpeta:
-- `v2_prototipo_completo.jpg`
-- `v2_circuito_integrado.jpg`
-- `v2_encapsulado_inicial.jpg`
-- `v2_testing_usuario.jpg`
 
----
 
-## Resultados de Testing
 ### Feedback del Avance #2
 
 **Comentarios del profesor/ayudante:**
