@@ -17,7 +17,7 @@
 
 1. **Dependencia del hotspot de un celular:** el sistema dependía de un iPhone. Ahora el ESP32 crea su propia red (modo Access Point).
 2. **Presiones del botón perdidas o lentas:** había que apretar varias veces. Las causas eran el ahorro de energía del WiFi, la antena débil de la placa mini y presiones mientras la placa estaba ocupada. Se desactivó el ahorro de energía, se ajustó la potencia de transmisión y el botón ahora usa una interrupción.
-
+3. **El amarillo no se veía en el LED:** en la prueba con un solo LED (`software/src/pruebas/prueba_sensor_un_led`) el Serial Monitor indicaba el color correcto, pero el LED pasaba de verde a rojo sin mostrar amarillo. Se calibraron los umbrales observando la amplitud en el Serial Monitor: de 15 / 1000 se pasó a 17 / 42.
 
 ## Fotos del Prototipo v2
 
