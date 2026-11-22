@@ -8,7 +8,7 @@ Este documento responde a cuatro criterios de la rúbrica de Software: cómo se 
 |---|---|---|---|
 | Micrófono KY-038 en el ESP32 central | Amplitud del sonido de la sala (máximo menos mínimo en una ventana de 50 ms) | Una medición cada ~100 ms para el semáforo | El LED debe reaccionar al instante cuando la sala sube el volumen |
 | ESP32 central hacia la nube | Promedio de la amplitud de los últimos 10 s y su color | Cada 10 s | Un promedio evita que un golpe aislado (una silla, una puerta) cuente como "mucho ruido". El registro de datos cada 10 segundos es para facilitar la evaluación , en una sala de clases real, se consideran 5 o más minutos |
-| Botón del estudiante | Pedido de ayuda | Cuando se presiona | Es un evento: se registra la hora exacta. Si ya hay uno pendiente no se duplica |
+| Botón del estudiante | Pedido de ayuda | Cuando se presiona | Se registra en la hora exacta que se presionó. Si ya hay uno pendiente no se duplica |
 | Profesora, desde la página | Hora en que atendió, motivo y nota | Cuando marca "Ya atendí" | Permite medir cuánto esperó el estudiante y por qué pidió ayuda |
 
 **Cómo se evita perder datos o inventarlos**
