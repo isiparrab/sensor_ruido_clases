@@ -21,7 +21,7 @@ iteraciones/
 | Dónde se ve la información | Monitor Serie | Página local en `192.168.4.1` (solo conectado a la red del ESP32) | Página pública en Railway, desde cualquier celular o computador |
 | Quién apaga la luz de ayuda | — | Cualquiera, desde la página local o el botón | Solo la profesora, con su clave |
 | Datos guardados | Ninguno | Ninguno (se pierden al apagar) | Todas las mediciones y pedidos en PostgreSQL, con calendario y reporte diario |
-| Principal problema | El amarillo no se veía, mal calibrado | No guardaba datos y no estaba en la red | Falta validar con usuarios en una sala real |
+| Principal problema | El amarillo no se veía, mal calibrado | No guardaba datos y no estaba en la red | Si bien se pudo hacer la validación con usuarios reales, no son el público objetivo, los cuales son niños de básica principalmente |
 
 ## Incorporación del feedback
 
