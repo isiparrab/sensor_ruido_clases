@@ -1,55 +1,51 @@
+
 /*
   =====================================================================
-  SEMÁFORO SOCIOEMOCIONAL DE AULA — BOTÓN DE ESCRITORIO  (v2)
-  TEI201 Taller de Diseño en Ingeniería — Avance #2
-  Placa: ESP32 mini (ej. ESP32-C3 SuperMini)
+  SEMÁFORO DE RUIDO — BOTÓN DEL ESTUDIANTE  (v3)
+  TEI201 Taller de Diseño en Ingeniería — Avance #3
+  Placa: ESP32-S3 SuperMini (alimentada con batería LiPo 3,7 V en B+/B-)
   =====================================================================
   QUÉ HACE:
-   - Se conecta a la red WiFi "SemaforoAula" que crea el dispositivo central.
-   - Cuando el estudiante aprieta el botón, envía un mensaje WiFi al central
-     para encender (o cancelar) la luz blanca de la pizarra.
-   - Su LED propio confirma al estudiante que el mensaje llegó.
-     LED encendido fijo = solicitud activa
-     LED parpadeando rápido = buscando la red WiFi
+   - Se conecta a la red "AulaRuido" que crea el ESP32 central (pizarra).
+   - Cuando el estudiante aprieta el botón, manda un aviso a
+     http://192.168.4.1/aviso. El central enciende la luz de ayuda y
+     lo registra en la nube; la profesora la apaga desde la página web.
+   - El LED RGB de la placa (GPIO 48) le confirma al estudiante:
+       azul parpadeando = buscando la red
+       verde 3 s        = el aviso llegó
+       rojo 3 s         = el aviso no llegó (volver a apretar)
 
-  ITERACIÓN v1 -> v2:
-   Problema: a veces había que apretar varias veces para que se prendiera
-   la luz blanca (respuesta lenta / presiones perdidas).
-   Causas: ahorro de energía del WiFi activado, antena débil de la placa
-   mini y presiones que ocurrían mientras la placa estaba ocupada.
-   Solución: se desactiva el ahorro de energía del WiFi, se ajusta la
-   potencia de transmisión y el botón se detecta con una interrupción,
-   así ninguna presión se pierde.
+  CAMBIOS v2 -> v3:
+   - Placa ESP32-C3 -> ESP32-S3 SuperMini: el LED ahora es RGB en el pin 48.
+   - Red y ruta iguales a central_nube.ino (AulaRuido / aula12345 / /aviso).
+   - Se quitó la consulta /solicitud: la luz ahora la apaga solo la profesora.
 
-  LIBRERÍAS: WiFi.h y HTTPClient.h (incluidas con el paquete ESP32).
+  LIBRERÍAS: WiFi.h y HTTPClient.h (incluidas en el paquete ESP32).
+  En Arduino IDE: Board = "ESP32S3 Dev Module", USB CDC On Boot = Enabled.
   =====================================================================
 */
 
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-// ---------------------- RED DEL DISPOSITIVO CENTRAL ------------------
-const char* WIFI_NOMBRE = "SemaforoAula";
-const char* WIFI_CLAVE  = "aula2026";
-const char* URL_BOTON     = "http://192.168.4.1/boton";      // alterna la solicitud
-const char* URL_SOLICITUD = "http://192.168.4.1/solicitud";  // consulta el estado
+// ---------------------- RED DEL ESP32 CENTRAL ------------------------
+const char* WIFI_NOMBRE = "AulaRuido";      // igual que en central_nube.ino
+const char* WIFI_CLAVE  = "aula12345";
+const char* URL_AVISO   = "http://192.168.4.1/aviso";
 
 // ---------------------- PINES ----------------------------------------
-const int PIN_BOTON = 4;       // botón entre este pin y GND (sin resistencia)
-const int PIN_LED   = 8;       // LED de confirmación (integrado en la C3 SuperMini)
-const bool LED_ACTIVO_BAJO = true;  // la C3 SuperMini enciende su LED con LOW
+const int PIN_BOTON = 5;     // botón entre este pin y GND (pull-up interno)
+const int PIN_LED   = 48;    // LED RGB integrado de la ESP32-S3 SuperMini
 
 // ---------------------- VARIABLES ------------------------------------
-volatile bool botonPresionado = false;     // lo marca la interrupción
+volatile bool botonPresionado = false;   // lo marca la interrupción
 volatile unsigned long ultimaPresion = 0;
-const unsigned long ANTIREBOTE_MS = 300;   // evita lecturas dobles del botón
-unsigned long ultimaConsulta = 0;
-bool solicitudActiva = false;
+const unsigned long ANTIREBOTE_MS = 300; // evita lecturas dobles
 
 // =====================================================================
 
-// Interrupción: se ejecuta al instante cuando se aprieta el botón,
-// aunque la placa esté ocupada haciendo otra cosa.
+// Interrupción: se ejecuta apenas se aprieta el botón, aunque la placa
+// esté ocupada, así ninguna presión se pierde.
 void IRAM_ATTR alApretar() {
   unsigned long ahora = millis();
   if (ahora - ultimaPresion > ANTIREBOTE_MS) {
@@ -58,82 +54,64 @@ void IRAM_ATTR alApretar() {
   }
 }
 
-void ledConfirmacion(bool encendido) {
-  digitalWrite(PIN_LED, LED_ACTIVO_BAJO ? !encendido : encendido);
+// Enciende el LED RGB de la placa con brillo bajo (0-255 por color).
+void led(int r, int g, int b) {
+  rgbLedWrite(PIN_LED, r, g, b);   // si no compila, usar neopixelWrite(...)
 }
 
-// Se conecta (o reconecta) a la red del dispositivo central.
+// Se conecta (o reconecta) a la red del central. Azul parpadeando = buscando.
 void conectarWiFi() {
   if (WiFi.status() == WL_CONNECTED) return;
   Serial.print("Conectando a ");
   Serial.println(WIFI_NOMBRE);
   WiFi.begin(WIFI_NOMBRE, WIFI_CLAVE);
-  WiFi.setTxPower(WIFI_POWER_8_5dBm);   // mejora la conexión en placas mini
-  bool led = false;
+  bool encendido = false;
   while (WiFi.status() != WL_CONNECTED) {
-    led = !led;
-    ledConfirmacion(led);               // parpadeo = buscando red
-    delay(150);
+    encendido = !encendido;
+    led(0, 0, encendido ? 30 : 0);
+    delay(200);
   }
-  Serial.print("Conectado. IP de este botón: ");
+  led(0, 0, 0);
+  Serial.print("Conectado. IP del botón: ");
   Serial.println(WiFi.localIP());
-  ledConfirmacion(solicitudActiva);
 }
 
-// Envía una petición al central y devuelve su respuesta ("ON"/"OFF").
-String pedir(const char* url) {
+// Manda el aviso al central. Devuelve true si llegó (respuesta 200).
+bool enviarAviso() {
   HTTPClient http;
-  http.setTimeout(1500);
-  http.begin(url);
+  http.setTimeout(2000);
+  http.begin(URL_AVISO);
   int codigo = http.GET();
-  String respuesta = "";
-  if (codigo == 200) respuesta = http.getString();
-  else {
-    Serial.print("Error de comunicación: ");
-    Serial.println(codigo);
-  }
   http.end();
-  return respuesta;
+  Serial.printf("GET /aviso -> %d\n", codigo);
+  return codigo == 200;
 }
 
 void setup() {
   Serial.begin(115200);
   pinMode(PIN_BOTON, INPUT_PULLUP);
-  pinMode(PIN_LED, OUTPUT);
-  ledConfirmacion(false);
+  led(0, 0, 0);
 
   WiFi.mode(WIFI_STA);
-  WiFi.setSleep(false);                 // sin ahorro de energía = respuesta rápida
+  WiFi.setSleep(false);   // sin ahorro de energía = respuesta rápida
   conectarWiFi();
 
   attachInterrupt(digitalPinToInterrupt(PIN_BOTON), alApretar, FALLING);
 }
 
 void loop() {
-  conectarWiFi();   // si se cae la conexión, se reconecta solo
+  conectarWiFi();   // si se cae la red, se reconecta solo
 
-  // 1. Si se apretó el botón, avisar al central
   if (botonPresionado) {
     botonPresionado = false;
-    Serial.println("Botón presionado -> enviando por WiFi...");
-    String r = pedir(URL_BOTON);
-    if (r == "ON" || r == "OFF") {
-      solicitudActiva = (r == "ON");
-      ledConfirmacion(solicitudActiva);
-      Serial.println(solicitudActiva ? "Central confirmó: solicitud ACTIVA"
-                                     : "Central confirmó: solicitud cancelada");
+    Serial.println("Botón presionado -> enviando aviso...");
+    if (enviarAviso()) {
+      led(0, 40, 0);    // verde: el aviso llegó
+    } else {
+      led(40, 0, 0);    // rojo: no llegó, volver a apretar
     }
-  }
-
-  // 2. Cada 3 s preguntar si la solicitud sigue activa
-  //    (por si el profesor la marcó como atendida desde la página)
-  if (!botonPresionado && millis() - ultimaConsulta > 3000) {
-    ultimaConsulta = millis();
-    String r = pedir(URL_SOLICITUD);
-    if (r == "ON" || r == "OFF") {
-      solicitudActiva = (r == "ON");
-      ledConfirmacion(solicitudActiva);
-    }
+    delay(3000);
+    led(0, 0, 0);
   }
   delay(5);
 }
