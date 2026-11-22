@@ -69,12 +69,12 @@ Ya están publicados en https://semaforoenlinea.up.railway.app. Para correrlos e
 
 ## Calidad del código
 
-- Cada archivo empieza con un comentario que explica qué hace, sus librerías y su historial.
-- Los datos que cambian según el lugar (red WiFi, claves, umbrales y pines) están juntos al inicio de cada archivo como constantes.
-- El ESP32 central separa el trabajo en dos núcleos: el núcleo 1 mide el ruido y atiende el botón; el núcleo 0 hace los envíos HTTPS, que tardan 1 a 2 s, para que el semáforo no se congele.
-- Si falla el envío de un aviso, se reintenta cada 5 s sin bloquear al resto.
-- El servidor valida todo lo que recibe (números, colores y motivos permitidos) y usa consultas SQL con parámetros, nunca texto pegado.
-- Las claves viven en variables de entorno (`.env` en el computador y *Variables* en Railway). El `.env` está en `.gitignore`.
-- La página escapa todo el texto antes de mostrarlo, para que una nota no pueda inyectar código.
+- **Cada archivo explica qué hace.** Al inicio de cada archivo hay un comentario que cuenta para qué sirve, qué librerías usa y cómo fue cambiando.
+- **Los datos que se ajustan están juntos al principio.** La red WiFi, las claves, los umbrales del ruido y los pines están arriba del código, así se cambian fácil sin buscar por todo el archivo.
+- **El semáforo no se congela al mandar datos.** El ESP32 tiene dos "cerebros" (núcleos). Uno mide el ruido y atiende el botón; el otro manda los datos a internet, que demora 1 a 2 segundos. Así el semáforo sigue funcionando mientras se envía.
+- **Si un aviso no llega, se vuelve a intentar.** Si falla el envío de un pedido de ayuda, el ESP32 lo reintenta cada 5 segundos hasta que llega.
+- **El servidor solo guarda datos que tienen sentido.** Revisa que el ruido sea un número y que el color sea verde, amarillo o rojo. Si llega algo raro, no lo guarda.
+- **Las contraseñas no están en el código.** Se guardan en un archivo aparte (`.env`) que nunca se sube a GitHub, y en la configuración de Railway. Por eso el repositorio puede ser público sin mostrar las claves.
+- **Nadie puede romper la página escribiendo cosas raras.** Si alguien escribe código en una nota, la página lo muestra como texto normal y no lo ejecuta.
 
-Nombres: variables y funciones en `camelCase` y en español, constantes en `MAYUSCULAS_CON_GUION`.
+Los nombres en el código siguen siempre la misma regla, para que sea fácil de leer: las variables y funciones juntan palabras con mayúscula al medio (`enviarLectura`, `avisoActivo`) y las constantes van todas en mayúscula (`UMBRAL_ROJO`).
