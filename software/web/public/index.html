@@ -9,199 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <style>
-    :root {
-      --fondo: #fff8ec;
-      --tarjeta: #ffffff;
-      --texto: #22293a;
-      --suave: #6b7280;
-      --borde: #f0e6d6;
-      --carcasa: #243047;
-      --verde: #22c55e;
-      --verde-claro: #e8f9ee;
-      --amarillo: #facc15;
-      --amarillo-claro: #fff7d1;
-      --rojo: #ef4444;
-      --rojo-claro: #ffe8e8;
-      --azul: #3b82f6;
-      --azul-claro: #e7f0ff;
-      --gris-claro: #f3f4f6;
-      --radio: 28px;
-      --sombra: 0 10px 30px rgba(36, 48, 71, 0.08);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Nunito", system-ui, sans-serif;
-      color: var(--texto);
-      background:
-        radial-gradient(circle at 8% 10%, #ffe9c7 0, transparent 28%),
-        radial-gradient(circle at 92% 0%, #dff3ff 0, transparent 30%),
-        var(--fondo);
-      min-height: 100vh;
-    }
-    h1, h2, h3 { font-family: "Baloo 2", "Nunito", sans-serif; margin: 0; line-height: 1.1; }
-    button { font: inherit; cursor: pointer; }
-
-    .contenedor { max-width: 1120px; margin: 0 auto; padding: 24px 16px 48px; }
-
-    /* ---------- Encabezado ---------- */
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; flex-wrap: wrap; margin-bottom: 24px;
-    }
-    .marca { display: flex; align-items: center; gap: 14px; }
-    .marca-icono {
-      width: 46px; height: 46px; border-radius: 14px; background: var(--carcasa);
-      display: grid; place-items: center; box-shadow: var(--sombra);
-    }
-    .marca h1 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
-    .marca p { margin: 0; color: var(--suave); font-weight: 600; }
-    .acciones { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-
-    .pastilla {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 14px; border-radius: 999px; font-weight: 700; font-size: 0.9rem;
-      background: var(--tarjeta); border: 2px solid var(--borde);
-    }
-    .punto { width: 10px; height: 10px; border-radius: 50%; background: var(--suave); }
-    .pastilla.ok .punto { background: var(--verde); box-shadow: 0 0 0 4px var(--verde-claro); }
-    .pastilla.mal .punto { background: var(--rojo); box-shadow: 0 0 0 4px var(--rojo-claro); }
-
-    .boton {
-      border: 0; border-radius: 999px; padding: 10px 18px; font-weight: 800;
-      background: var(--carcasa); color: #fff; transition: transform .15s, box-shadow .15s;
-    }
-    .boton:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(36,48,71,.2); }
-    .boton:focus-visible, input:focus-visible { outline: 3px solid var(--azul); outline-offset: 2px; }
-    .boton.secundario { background: var(--tarjeta); color: var(--texto); border: 2px solid var(--borde); }
-    .boton.azul { background: var(--azul); }
-    .boton.grande { padding: 14px 26px; font-size: 1.1rem; }
-
-    /* ---------- Rejilla ---------- */
-    .rejilla { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 20px; }
-    .columna { display: grid; gap: 20px; align-content: start; }
-    .rejilla > *, .columna > * { min-width: 0; }
-    .tarjeta {
-      background: var(--tarjeta); border-radius: var(--radio); padding: 24px;
-      box-shadow: var(--sombra); border: 2px solid var(--borde);
-    }
-    .tarjeta h2 { font-size: 1.35rem; margin-bottom: 4px; }
-    .etiqueta { color: var(--suave); font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; }
-
-    /* ---------- Semaforo ---------- */
-    .ahora {
-      display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;
-      transition: background .5s, border-color .5s;
-      min-height: 380px;
-    }
-    .ahora[data-nivel="verde"]    { background: var(--verde-claro);    border-color: #bfeccd; }
-    .ahora[data-nivel="amarillo"] { background: var(--amarillo-claro); border-color: #f6e39a; }
-    .ahora[data-nivel="rojo"]     { background: var(--rojo-claro);     border-color: #f8c2c2; }
-
-    .semaforo {
-      background: var(--carcasa); border-radius: 60px; padding: 18px;
-      display: grid; gap: 16px; position: relative;
-      box-shadow: inset 0 -6px 0 rgba(0,0,0,.25), var(--sombra);
-    }
-    .semaforo::after {
-      content: ""; position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%);
-      width: 22px; height: 26px; background: var(--carcasa); border-radius: 0 0 8px 8px;
-    }
-    .luz {
-      width: 96px; height: 96px; border-radius: 50%;
-      background: #3a4660; opacity: .55;
-      transition: background .35s, box-shadow .35s, opacity .35s, transform .35s;
-      display: grid; place-items: center; font-size: 2.6rem;
-    }
-    .luz span { opacity: 0; transition: opacity .35s; }
-    .luz.encendida { opacity: 1; transform: scale(1.04); }
-    .luz.encendida span { opacity: 1; }
-    .luz.rojo.encendida     { background: var(--rojo);     box-shadow: 0 0 32px 6px rgba(239,68,68,.65); }
-    .luz.amarillo.encendida { background: var(--amarillo); box-shadow: 0 0 32px 6px rgba(250,204,21,.7); }
-    .luz.verde.encendida    { background: var(--verde);    box-shadow: 0 0 32px 6px rgba(34,197,94,.6); }
-
-    .mensaje h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); margin: 6px 0 10px; }
-    .mensaje p { font-size: 1.2rem; margin: 0 0 22px; color: #3f4759; font-weight: 600; }
-    .medidor { background: rgba(255,255,255,.75); border-radius: 18px; padding: 14px 18px; }
-    .medidor-fila { display: flex; justify-content: space-between; align-items: baseline; font-weight: 800; }
-    .medidor-valor { font-family: "Baloo 2", sans-serif; font-size: 1.8rem; }
-    .medidor-hora { color: var(--suave); font-size: .9rem; font-weight: 600; margin-top: 4px; }
-
-    /* ---------- Ayuda ---------- */
-    .ayuda { text-align: center; transition: background .4s, border-color .4s; }
-    .ayuda .icono-ayuda {
-      width: 92px; height: 92px; margin: 6px auto 14px; border-radius: 50%;
-      display: grid; place-items: center; font-size: 2.8rem; background: var(--gris-claro);
-      transition: background .4s, box-shadow .4s;
-    }
-    .ayuda p { color: var(--suave); font-weight: 600; margin: 6px 0 0; }
-    .ayuda.activa { background: var(--azul-claro); border-color: #b9d2ff; }
-    .ayuda.activa .icono-ayuda { background: var(--azul); animation: latido 1.6s ease-in-out infinite; }
-    .ayuda.activa h2 { color: #1d4ed8; font-size: 1.6rem; }
-    .ayuda .boton { margin-top: 18px; }
-    @keyframes latido {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,.55); }
-      50% { box-shadow: 0 0 0 20px rgba(59,130,246,0); }
-    }
-
-    /* ---------- Resumen del dia ---------- */
-    .barra {
-      display: flex; height: 26px; border-radius: 999px; overflow: hidden;
-      background: var(--gris-claro); margin: 14px 0 12px;
-    }
-    .barra div { transition: width .6s; }
-    .leyenda { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .leyenda-item { background: var(--gris-claro); border-radius: 16px; padding: 10px; text-align: center; }
-    .leyenda-item strong { display: block; font-family: "Baloo 2", sans-serif; font-size: 1.5rem; }
-    .leyenda-item small { font-weight: 700; color: var(--suave); }
-    .chip { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; }
-    .dato-ayudas { margin-top: 12px; font-weight: 700; color: var(--suave); }
-
-    /* ---------- Grafico y registro ---------- */
-    .ancho { grid-column: 1 / -1; }
-    .grafico-caja { position: relative; height: 260px; margin-top: 12px; }
-    details summary { cursor: pointer; font-weight: 800; font-family: "Baloo 2", sans-serif; font-size: 1.2rem; }
-    .tabla-caja { overflow-x: auto; margin-top: 12px; }
-    table { width: 100%; border-collapse: collapse; font-size: .95rem; }
-    th, td { padding: 10px 8px; text-align: left; border-bottom: 1px solid var(--borde); white-space: nowrap; }
-    th { color: var(--suave); font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; }
-    .nivel-tag { padding: 3px 10px; border-radius: 999px; font-weight: 800; font-size: .8rem; }
-    .nivel-tag.verde { background: var(--verde-claro); color: #15803d; }
-    .nivel-tag.amarillo { background: var(--amarillo-claro); color: #a16207; }
-    .nivel-tag.rojo { background: var(--rojo-claro); color: #b91c1c; }
-
-    /* ---------- Acceso profesora ---------- */
-    dialog {
-      border: 0; border-radius: var(--radio); padding: 28px; width: min(400px, calc(100vw - 32px));
-      box-shadow: 0 20px 60px rgba(0,0,0,.25); color: var(--texto);
-    }
-    dialog::backdrop { background: rgba(36,48,71,.45); }
-    dialog h2 { margin-bottom: 6px; }
-    dialog p { color: var(--suave); margin: 0 0 16px; }
-    dialog input {
-      width: 100%; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--borde);
-      font: inherit; font-size: 1.05rem;
-    }
-    .error { color: #b91c1c; font-weight: 700; min-height: 1.4em; margin: 8px 0 0; }
-    .dialogo-botones { display: flex; justify-content: flex-end; gap: 10px; margin-top: 14px; }
-    .modo-profe { background: var(--azul-claro); color: #1d4ed8; border-color: #b9d2ff; }
-
-    footer { text-align: center; color: var(--suave); font-weight: 600; margin-top: 28px; font-size: .9rem; }
-
-    /* ---------- Celular ---------- */
-    @media (max-width: 860px) {
-      .rejilla { grid-template-columns: minmax(0, 1fr); }
-      .ahora { grid-template-columns: 1fr; justify-items: center; text-align: center; min-height: 0; }
-      .semaforo { grid-auto-flow: column; border-radius: 50px; }
-      .semaforo::after { display: none; }
-      .luz { width: 76px; height: 76px; font-size: 2rem; }
-      .mensaje { width: 100%; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; animation: none !important; }
-    }
-  </style>
+  <link rel="stylesheet" href="estilos.css?v=2">
 </head>
 <body>
   <div class="contenedor">
@@ -217,6 +25,7 @@
       </div>
       <div class="acciones">
         <span id="conexion" class="pastilla"><span class="punto"></span><span id="conexion-texto">Conectando…</span></span>
+        <a class="boton secundario" href="registro.html">📅 Registro diario</a>
         <button id="boton-profe" class="boton secundario" type="button">👩‍🏫 Acceso profesora</button>
       </div>
     </header>
@@ -280,7 +89,8 @@
       <!-- Registro -->
       <section class="tarjeta ancho">
         <details>
-          <summary>Ver registro de mediciones</summary>
+          <summary>Ver últimas mediciones</summary>
+          <p class="ayuda-nota">Aquí se ven solo las 60 más recientes. Todas quedan guardadas: revisa cualquier día en el <a href="registro.html">📅 Registro diario</a>.</p>
           <div class="tabla-caja">
             <table>
               <thead><tr><th>#</th><th>Hora</th><th>Color</th><th>Ruido</th><th>Dispositivo</th></tr></thead>
@@ -294,21 +104,7 @@
     <footer>Taller de Diseño · Semáforo de ruido para la sala de clases</footer>
   </div>
 
-  <!-- Ventana de acceso de la profesora -->
-  <dialog id="dialogo-profe">
-    <form id="form-profe" method="dialog">
-      <h2>Acceso profesora</h2>
-      <p>Con tu clave puedes apagar la luz azul cuando atiendas a un estudiante.</p>
-      <label for="clave-profe" class="etiqueta">Clave</label>
-      <input id="clave-profe" type="password" autocomplete="current-password" required>
-      <p class="error" id="error-profe"></p>
-      <div class="dialogo-botones">
-        <button class="boton secundario" type="button" id="cancelar-profe">Cancelar</button>
-        <button class="boton azul" type="submit">Entrar</button>
-      </div>
-    </form>
-  </dialog>
-
+  <script src="comun.js?v=2"></script>
   <script>
     // ---------- Textos de cada color ----------
     const MENSAJES = {
@@ -317,54 +113,13 @@
       rojo:     { titulo: "¡Mucho ruido!",             texto: "Hagamos una pausa, respiremos y volvamos a empezar." },
       nada:     { titulo: "Esperando al semáforo…",    texto: "Revisa que el semáforo esté encendido y conectado al WiFi." },
     };
-    const COLORES = { verde: "#22c55e", amarillo: "#facc15", rojo: "#ef4444" };
-    const NOMBRES = { verde: "Tranquila", amarillo: "Subiendo", rojo: "Mucho ruido" };
 
-    const $ = id => document.getElementById(id);
-
-    // ---------- Clave de la profesora (solo en esta pestaña) ----------
-    let claveProfe = null;
-    try { claveProfe = sessionStorage.getItem("claveProfe"); } catch (e) {}
-
-    function guardarClave(clave) {
-      claveProfe = clave;
-      try {
-        if (clave) sessionStorage.setItem("claveProfe", clave);
-        else sessionStorage.removeItem("claveProfe");
-      } catch (e) {}
-      pintarBotonProfe();
-    }
-
-    function pintarBotonProfe() {
+    // ---------- Botón de la profesora ----------
+    Profe.alCambiar(clave => {
       const b = $("boton-profe");
-      if (claveProfe) {
-        b.textContent = "👩‍🏫 Modo profesora · Salir";
-        b.classList.add("modo-profe");
-      } else {
-        b.textContent = "👩‍🏫 Acceso profesora";
-        b.classList.remove("modo-profe");
-      }
-    }
-
-    // ---------- Utilidades ----------
-    function hace(fecha) {
-      const s = Math.max(0, Math.round((Date.now() - new Date(fecha).getTime()) / 1000));
-      if (s < 10) return "recién";
-      if (s < 60) return `hace ${s} segundos`;
-      const m = Math.round(s / 60);
-      if (m < 60) return m === 1 ? "hace 1 minuto" : `hace ${m} minutos`;
-      const h = Math.round(m / 60);
-      return h === 1 ? "hace 1 hora" : `hace ${h} horas`;
-    }
-    function hora(fecha) {
-      return new Date(fecha).toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
-    }
-    function escapar(t) {
-      return String(t ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-    }
-    function formatearValor(v) {
-      return Number.isInteger(v) ? v : Number(v).toFixed(1);
-    }
+      b.textContent = clave ? "👩‍🏫 Modo profesora · Salir" : "👩‍🏫 Acceso profesora";
+      b.classList.toggle("modo-profe", !!clave);
+    });
 
     // ---------- Estado actual ----------
     let ultimoEstado = null;
@@ -484,45 +239,29 @@
     }
 
     // ---------- Acceso profesora ----------
-    const dialogo = $("dialogo-profe");
-    let atenderAlEntrar = false;
-
-    function abrirAcceso(despuesAtender) {
-      atenderAlEntrar = !!despuesAtender;
-      $("error-profe").textContent = "";
-      $("clave-profe").value = "";
-      dialogo.showModal();
-      $("clave-profe").focus();
-    }
-
     $("boton-profe").addEventListener("click", () => {
-      if (claveProfe) guardarClave(null);
-      else abrirAcceso(false);
-    });
-    $("cancelar-profe").addEventListener("click", () => dialogo.close());
-
-    $("form-profe").addEventListener("submit", async ev => {
-      ev.preventDefault();
-      const clave = $("clave-profe").value;
-      try {
-        const res = await fetch("/api/profe/entrar", { method: "POST", headers: { "x-profe-clave": clave } });
-        if (!res.ok) { $("error-profe").textContent = "Clave incorrecta. Intenta de nuevo."; return; }
-        guardarClave(clave);
-        dialogo.close();
-        if (atenderAlEntrar) atender();
-      } catch (e) {
-        $("error-profe").textContent = "No se pudo conectar. Revisa el internet.";
-      }
+      if (Profe.clave) Profe.guardar(null);
+      else Profe.pedirClave();
     });
 
+    // "Ya atendí": primero la clave, luego el motivo, y se apaga la luz azul
     async function atender() {
-      if (!claveProfe) { abrirAcceso(true); return; }
       const boton = $("boton-atender");
       boton.disabled = true;
       try {
-        const res = await fetch("/api/asistencia/atender", { method: "POST", headers: { "x-profe-clave": claveProfe } });
-        if (res.status === 401) { guardarClave(null); abrirAcceso(true); return; }
+        if (!Profe.clave && !(await Profe.pedirClave())) return;
+        const m = await pedirMotivo({
+          titulo: "¿Por qué pidió ayuda?",
+          texto: "Queda guardado en el registro diario para ver cómo va el curso. Solo lo ven las profesoras.",
+          boton: "Guardar y apagar luz",
+          conSaltar: true,
+        });
+        if (!m) return;
+        const res = await Profe.enviar("/api/asistencia/atender", m);
+        if (res && !res.ok) alert("No se pudo apagar la luz azul. Intenta de nuevo.");
         await actualizarEstado();
+      } catch (e) {
+        alert("No se pudo conectar. Revisa el internet.");
       } finally {
         boton.disabled = false;
       }
@@ -530,7 +269,6 @@
     $("boton-atender").addEventListener("click", atender);
 
     // ---------- Inicio ----------
-    pintarBotonProfe();
     actualizarEstado();
     actualizarLecturas();
     setInterval(actualizarEstado, 3000);   // el estado se revisa cada 3 segundos
