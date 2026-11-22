@@ -55,9 +55,9 @@ Las versiones exactas están en `software/web/package-lock.json`.
 
 ## Uso de Inteligencia Artificial
 
-| Herramienta | Fecha | Para qué se usó | Qué adaptó o decidió el equipo |
+| Herramienta | Para qué se usó | Qué se adaptó o cambió |
 |---|---|---|---|
-| Claude (Anthropic) | Octubre 2026 | Ayuda para escribir partes del código de los ESP32 | El equipo calibró los umbrales (17 y 42) con el Serial Monitor y ajustó los niveles del micrófono |
-| Claude Code (Anthropic) | Noviembre 2026 | Seguir la guía de Railway y Aiven, escribir el servidor y la página web, adaptar el código del ESP32 para mandar datos a la nube, ordenar la documentación del repositorio | El equipo definió qué debía mostrar la página (semáforo para los niños, luz azul de ayuda, acceso de la profesora, motivos y registro diario), probó todo con el hardware real e identificó que los colores del LED salían cambiados |
+| Claude (Anthropic) | Ayuda para escribir partes del código de los ESP32 | El equipo calibró los umbrales (17 y 42) con el Serial Monitor y ajustó los niveles del micrófono |
+| Claude Code (Anthropic) | Seguir la guía de Railway y Aiven, escribir el servidor y la página web, adaptar el código del ESP32 para mandar datos a la nube, ordenar la documentación del repositorio | Se definió qué debía mostrar la página (semáforo visual, luz azul de solicitud de ayuda, acceso de la profesora, registro de los motivos por la que se solicitó y registro diario) |
 
 Todo lo que entregó la IA fue revisado y probado por el equipo con el prototipo real.
