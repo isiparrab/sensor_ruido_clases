@@ -16,12 +16,12 @@ iteraciones/
 | Fecha | Septiembre a octubre de 2026 | 26-10-2026 (Avance 2) | 22-11-2026 |
 | Sensor | KY-038 | KY-038 | KY-038 |
 | Semáforo | LED RGB, umbrales sin calibrar (15 / 1000) | LED RGB, umbrales calibrados 17 / 42 | LED RGB con pines corregidos, umbrales 25 / 50 en el código con nube |
-| Pedido de ayuda | — | Botón con ESP32-C3 y luz blanca (LED RGB #2) | Botón y luz **azul**, separada del semáforo |
-| Conectividad | Hotspot de un iPhone | Red WiFi propia del ESP32 (sin internet) | Red propia para el botón **e** internet por hotspot al mismo tiempo |
+| Pedido de ayuda | — | Botón con ESP32-C3 y luz blanca (LED RGB #2) | Botón y luz azul, separada del semáforo |
+| Conectividad | Hotspot de un Android | Red WiFi propia del ESP32 (sin internet) | Red propia para el botón **e** internet por hotspot al mismo tiempo |
 | Dónde se ve la información | Monitor Serie | Página local en `192.168.4.1` (solo conectado a la red del ESP32) | Página pública en Railway, desde cualquier celular o computador |
 | Quién apaga la luz de ayuda | — | Cualquiera, desde la página local o el botón | Solo la profesora, con su clave |
 | Datos guardados | Ninguno | Ninguno (se pierden al apagar) | Todas las mediciones y pedidos en PostgreSQL, con calendario y reporte diario |
-| Principal problema | El amarillo no se veía y dependía de un celular | No guardaba datos y no estaba en la red | Falta validar con usuarios en una sala real |
+| Principal problema | El amarillo no se veía, mal calibrado | No guardaba datos y no estaba en la red | Falta validar con usuarios en una sala real |
 
 ## Incorporación del feedback
 
