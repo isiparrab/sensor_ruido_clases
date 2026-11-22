@@ -8,11 +8,11 @@ Primero se instala el paquete de placas **esp32 de Espressif Systems** desde *He
 
 | Librería | Versión | Cómo se instala | Usada en | Obligatoria |
 |---|---|---|---|---|
-| WiFi | Incluida en el paquete ESP32 | Con el paquete de placas | Central, central con nube y botón | ✅ |
-| WebServer | Incluida en el paquete ESP32 | Con el paquete de placas | Central y central con nube | ✅ |
-| HTTPClient | Incluida en el paquete ESP32 | Con el paquete de placas | Botón y central con nube | ✅ |
-| WiFiClientSecure | Incluida en el paquete ESP32 | Con el paquete de placas | Central con nube | ✅ |
-| ArduinoJson | 7.x | *Herramientas > Gestionar bibliotecas*, buscar "ArduinoJson" de Benoît Blanchon | Central con nube | ✅ |
+| WiFi | Incluida en el paquete ESP32 | Con el paquete de placas | Central, central con nube y botón | si |
+| WebServer | Incluida en el paquete ESP32 | Con el paquete de placas | Central y central con nube | si |
+| HTTPClient | Incluida en el paquete ESP32 | Con el paquete de placas | Botón y central con nube | si |
+| WiFiClientSecure | Incluida en el paquete ESP32 | Con el paquete de placas | Central con nube | si |
+| ArduinoJson | 7.x | *Herramientas > Gestionar bibliotecas*, buscar "ArduinoJson" de Benoît Blanchon | Central con nube | si |
 
 ## Servidor (Node.js 18 o superior)
 
@@ -26,7 +26,7 @@ Se instalan con `npm install` dentro de `software/web`. Las versiones exactas qu
 
 ## Página web
 
-No se instala nada: se carga desde internet al abrir la página.
+No se instala nada, esta se carga desde internet al abrir la página.
 
 | Librería | Versión | Desde |
 |---|---|---|
