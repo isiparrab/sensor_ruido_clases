@@ -1,47 +1,34 @@
 # Librerías
 
-## Librerías Estándar (Arduino IDE)
+Ninguna librería viene incluida en el repositorio. Esta lista indica qué instalar y con qué versión se desarrolló el proyecto. Las fuentes y licencias están en [FUENTES.md](../../FUENTES.md).
 
-Instalar desde el Library Manager de Arduino IDE:
+## ESP32 (Arduino IDE 2.x)
 
-1. **[Nombre Librería 1]** - v[X.X.X]
-   - Propósito: [Descripción]
-   - Instalación: `Sketch > Include Library > Manage Libraries > Buscar "[nombre]"`
+Primero se instala el paquete de placas **esp32 de Espressif Systems** desde *Herramientas > Placa > Gestor de placas*. Trae incluidas casi todas las librerías.
 
-2. **[Nombre Librería 2]** - v[X.X.X]
-   - Propósito: [Descripción]
-   - Instalación: [Instrucciones]
+| Librería | Versión | Cómo se instala | Usada en | Obligatoria |
+|---|---|---|---|---|
+| WiFi | Incluida en el paquete ESP32 | Con el paquete de placas | Central, central con nube y botón | ✅ |
+| WebServer | Incluida en el paquete ESP32 | Con el paquete de placas | Central y central con nube | ✅ |
+| HTTPClient | Incluida en el paquete ESP32 | Con el paquete de placas | Botón y central con nube | ✅ |
+| WiFiClientSecure | Incluida en el paquete ESP32 | Con el paquete de placas | Central con nube | ✅ |
+| ArduinoJson | 7.x | *Herramientas > Gestionar bibliotecas*, buscar "ArduinoJson" de Benoît Blanchon | Central con nube | ✅ |
 
----
+## Servidor (Node.js 18 o superior)
 
-## Librerías Personalizadas/Modificadas
+Se instalan con `npm install` dentro de `software/web`. Las versiones exactas quedan fijadas en `package-lock.json`.
 
-Si hay librerías modificadas o no disponibles en Arduino IDE, incluir en esta carpeta:
+| Librería | Versión | Para qué |
+|---|---|---|
+| express | 4.22.3 | Servidor web y API |
+| pg | 8.23.1 | Conexión a PostgreSQL |
+| dotenv | 16.6.1 | Leer las claves del archivo `.env` en el computador |
 
-### Estructura
-```
-librerias/
-├── MiLibreria/
-│   ├── MiLibreria.h
-│   ├── MiLibreria.cpp
-│   ├── keywords.txt
-│   └── README.md
-```
+## Página web
 
-### Instalación Manual
-```bash
-# Copiar carpeta a Arduino libraries
-cp -r MiLibreria ~/Documents/Arduino/libraries/
-```
+No se instala nada: se carga desde internet al abrir la página.
 
----
-
-## Dependencias Completas
-
-Listar TODAS las librerías necesarias con versiones exactas:
-
-| Librería | Versión | Fuente | Obligatoria |
-|----------|---------|--------|-------------|
-| WiFi | Built-in | ESP32 Core | ✅ |
-| [Lib 1] | x.x.x | Arduino Library Manager | ✅ |
-| [Lib 2] | x.x.x | GitHub | ❌ |
+| Librería | Versión | Desde |
+|---|---|---|
+| Chart.js | 4.4.1 | cdn.jsdelivr.net |
+| Fuentes Baloo 2 y Nunito | — | Google Fonts |

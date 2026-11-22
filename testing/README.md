@@ -1,93 +1,34 @@
-# Testing y Validación
+# Testing y validación
 
 ## Objetivo
-Validar el funcionamiento del prototipo con usuarios reales y medir el impacto cuantitativo en la problemática ODS seleccionada.
 
----
+Comprobar que el prototipo mide bien el ruido, que el pedido de ayuda llega y se atiende rápido, y que la información sirve a la profesora para cuidar a los estudiantes con TEA.
 
-## 📁 Carpetas
+| Nivel | Qué se prueba | Estado |
+|---|---|---|
+| Técnico | Colores del semáforo, botón, envío de datos, apagado de la luz, comportamiento sin internet y seguridad | Una prueba de una hora hecha el 22-11-2026. Faltan las pruebas T1 a T8 completas |
+| Usuarios | Al menos 5 personas usando el semáforo, el botón y la página | **Pendiente** |
 
-#### `reportes/`
-Documentos con resultados del testing
+## Carpetas
 
-#### `evidencias/`
-Fotos y videos de sesiones con usuarios
+| Carpeta | Contenido |
+|---|---|
+| [reportes](reportes) | [Protocolo de pruebas](reportes/protocolo_pruebas.md). El reporte con resultados se agrega al terminar las pruebas |
+| [datos](datos/README.md) | Datos reales exportados de la base de datos |
+| [evidencias](evidencias) | Fotos y videos de las pruebas (pendiente) |
 
-#### `datos/`
-Datos cuantitativos recolectados
+## Resultados hasta ahora
 
----
+| Prueba | Resultado | Origen |
+|---|---|---|
+| Mediciones recibidas en una hora | 332, una cada 11.0 s en promedio | Real, 22-11-2026 |
+| Cortes de más de 30 s | 4, el más largo de 141 s | Real, 22-11-2026 |
+| Pedidos de ayuda registrados y apagados desde la página | 2 de 2 | Real, 22-11-2026 |
+| Tiempo hasta que la profesora apagó la luz | 45 s y 126 s | Real, 22-11-2026 |
+| Pruebas con usuarios | — | Pendiente |
 
-## Metodología de Testing
+## Análisis inicial
 
-### Grupo Objetivo
-- **Perfil de usuarios:** [Descripción]
-- **Cantidad mínima:** 5 usuarios
-- **Ubicación:** [Contexto real de uso]
-
-### Protocolo de Testing
-1. **Briefing** (5 min)
-   - Explicar propósito del prototipo
-   - Contexto de uso
-
-2. **Sesión de Uso** (15-20 min)
-   - Usuario interactúa con prototipo
-   - Observación sin intervención
-   - Toma de notas
-
-3. **Entrevista Post-Testing** (10 min)
-   - Preguntas sobre experiencia
-   - Feedback cualitativo
-   - Sugerencias de mejora
-
-4. **Encuesta Cuantitativa** (5 min)
-   - Escala Likert (1-5)
-   - Métricas específicas
-
----
-
-## Métricas de Evaluación
-
-### Usabilidad
-- Facilidad de uso (1-5)
-- Claridad de funcionamiento (1-5)
-- Satisfacción general (1-5)
-
-### Impacto ODS
-- [Métrica específica 1 relacionada con ODS]
-- [Métrica específica 2 relacionada con ODS]
-- [Métrica específica 3 relacionada con ODS]
-
-### Desempeño Técnico
-- Tiempo de respuesta del sistema
-- Tasa de errores
-- Confiabilidad
-
----
-
-## Análisis de Resultados
-
-### Cuantitativo
-- Promedios y desviaciones estándar
-- Gráficos de resultados
-- Comparación con baseline
-
-### Cualitativo
-- Temas recurrentes en feedback
-- Problemas identificados
-- Sugerencias de mejora
-
----
-
-## Validación de Impacto ODS
-
-**ODS Seleccionado:** [Número y nombre]
-
-**Meta específica del proyecto:** [Describir]
-
-**Indicadores de impacto:**
-1. [Indicador 1] - Baseline: [X], Meta: [Y], Alcanzado: [Z]
-2. [Indicador 2] - Baseline: [X], Meta: [Y], Alcanzado: [Z]
-
-**Proyección de impacto a escala:**
-[Si el prototipo se despliega en toda la ciudad/comunidad, cuál sería el impacto estimado]
+- El envío funciona, pero no es continuo: 4 cortes en una hora. Probablemente se deben a la señal del hotspot. En las pruebas en sala conviene dejar el celular cerca del semáforo y repetir la prueba T6.
+- En esa hora la sala estuvo con ruido alto (amarillo o rojo) el 99 % del tiempo. Esto puede indicar que los umbrales del código con nube (25 / 50) son bajos para el lugar de la prueba. Hay que revisarlos en una sala real (prueba T1).
+- Los dos pedidos de ayuda llegaron después de 10 minutos con ruido alto. Con solo dos casos no se puede concluir nada, pero muestra que el sistema ya puede calcular esa relación.

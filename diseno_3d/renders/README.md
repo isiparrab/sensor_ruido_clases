@@ -1,54 +1,23 @@
-# Renders de Alta Calidad
+# Renders
 
-## Renders Requeridos (Mínimo 4 ángulos)
+Modelos hechos en Onshape.
 
-### 1. Vista Isométrica Frontal
-`01_isometrica_frontal.png`
-- Muestra exterior completo
-- Iluminación clara
-- Resolución: 1920×1080 mínimo
+| Archivo | Vista |
+|---|---|
+| [01_semaforo_exterior.jpeg](01_semaforo_exterior.jpeg) | Carcasa del semáforo, exterior |
+| [02_semaforo_interior.png](02_semaforo_interior.png) | Carcasa del semáforo, interior |
+| [03_boton_exterior.jpeg](03_boton_exterior.jpeg) | Carcasa del botón del estudiante, exterior |
+| [04_semaforo_interior.png](04_semaforo_interior.png) | Carcasa del semáforo, interior (otra vista) |
 
-### Renders Opcionales (Recomendados)
-- `02_detalle_sensores.png` - Close-up de sensores
-- `03_ensamble_explosionado.png` - Componentes separados
-- `04_variantes_color.png` - Si hay opciones de diseño
+![Semáforo exterior](01_semaforo_exterior.jpeg)
 
----
+![Semáforo interior](02_semaforo_interior.png)
 
-## Configuración de Render en Fusion 360
+![Botón exterior](03_boton_exterior.jpeg)
 
-### Settings Recomendados
-- **Render Engine:** Local / Cloud
-- **Environment:** [Tipo de iluminación]
-- **Resolution:** 1920×1080 o superior
-- **Quality:** High
-- **Exposure:** [Ajustado para visibilidad]
-- **Effects:** Ambient Occlusion ON
+![Semáforo interior, otra vista](04_semaforo_interior.png)
 
-### Materiales y Apariencias
-Asignar materiales realistas:
-- Plástico: PLA/ABS mate o satinado
-- Electrónica: PCB verde, componentes negros
-- Metales: Tornillos acero inoxidable
+## Pendiente
 
----
-
-## Nomenclatura de Archivos
-```
-[numero]_[descripcion]_[version].png
-
-Ejemplo:
-01_isometrica_frontal_v3.png
-```
-
----
-
-## Checklist de Calidad
-
-- [ ] Resolución mínima 1920×1080
-- [ ] Formato PNG (con transparencia si aplica)
-- [ ] Iluminación sin sombras excesivas
-- [ ] Componentes internos visibles en corte
-- [ ] Fondo neutro o contextual apropiado
-- [ ] Sin aliasing o bordes pixelados
-- [ ] Todos los componentes críticos visibles
+- Renders con todos los componentes dentro (ESP32, micrófono, LEDs y cables) y una vista explosionada.
+- Versión más pequeña del botón y del semáforo, según el feedback del Avance 2.

@@ -21,6 +21,9 @@
 
 ## Fotos del Prototipo v2
 
+![Placa con cableado](placa_con_cableado.JPG)
+
+![Botón con cableado](boto_con_cableado.JPG)
 
 
 ### Feedback del Avance #2

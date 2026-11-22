@@ -1,155 +1,44 @@
-# Historial de Iteraciones
+# Historial de iteraciones
 
-## Propósito
-
-Esta carpeta documenta la evolución del prototipo a través de las diferentes versiones desarrolladas durante el curso.
-
-**CRÍTICO:** Demostrar el proceso iterativo es un requisito para obtener puntaje completo en "Integración y Refinamiento" (2.5 puntos).
-
----
-
-## Estructura de Carpetas
-
-Cada iteración tiene su propia carpeta con documentación de esa versión:
+Cada versión cuenta qué se probó, qué falló y qué se cambió.
 
 ```
 iteraciones/
-├── iteracion_1/    # Concepto inicial - Prototipo alpha
-├── iteracion_2/    # Primera iteración - Avance #2
-└── iteracion_3/    # Versión final - Avance #3
+├── iteracion_1/    Semáforo de ruido con el ESP32 conectado al hotspot de un celular
+├── iteracion_2/    Red WiFi propia, botón del estudiante y página local (Avance 2)
+└── iteracion_3/    Conexión a la nube, luz azul, acceso de la profesora y registro diario
 ```
 
----
-
-## Contenido de Cada Iteración
-
-Cada carpeta debe incluir:
-
-1. **README.md** - Descripción de la versión
-2. **Fotos** - Imágenes del prototipo en ese estado
-3. **Esquema** - Circuito de esa versión (si cambió)
-4. **Código** - Versión del software (si cambió)
-5. **Notas** - Problemas identificados y mejoras planificadas
-
----
-
-## Tabla Comparativa de Iteraciones
+## Tabla comparativa
 
 | Aspecto | v1 | v2 | v3 |
-|---------|----|----|----| 
-| **Fecha** | [fecha] | [fecha] | [fecha] |
-| **Sensores** | [lista] | [lista] | [lista] |
-| **Actuadores** | [lista] | [lista] | [lista] |
-| **Conectividad** | [tipo] | [tipo] | [tipo] |
-| **Encapsulado** | ❌ | Prototipo | Finalizado |
-| **Testing** | Solo equipo | 2 usuarios | 5+ usuarios |
-| **Funcionalidad** | 60% | 80% | 100% |
+|---|---|---|---|
+| Fecha | Septiembre a octubre de 2026 | 26-10-2026 (Avance 2) | 22-11-2026 |
+| Sensor | KY-038 | KY-038 | KY-038 |
+| Semáforo | LED RGB, umbrales sin calibrar (15 / 1000) | LED RGB, umbrales calibrados 17 / 42 | LED RGB con pines corregidos, umbrales 25 / 50 en el código con nube |
+| Pedido de ayuda | — | Botón con ESP32-C3 y luz blanca (LED RGB #2) | Botón y luz **azul**, separada del semáforo |
+| Conectividad | Hotspot de un iPhone | Red WiFi propia del ESP32 (sin internet) | Red propia para el botón **e** internet por hotspot al mismo tiempo |
+| Dónde se ve la información | Monitor Serie | Página local en `192.168.4.1` (solo conectado a la red del ESP32) | Página pública en Railway, desde cualquier celular o computador |
+| Quién apaga la luz de ayuda | — | Cualquiera, desde la página local o el botón | Solo la profesora, con su clave |
+| Datos guardados | Ninguno | Ninguno (se pierden al apagar) | Todas las mediciones y pedidos en PostgreSQL, con calendario y reporte diario |
+| Principal problema | El amarillo no se veía y dependía de un celular | No guardaba datos y no estaba en la red | Falta validar con usuarios en una sala real |
 
----
+## Incorporación del feedback
 
-## Evolución del Diseño
+| Feedback del Avance 2 | Qué se hizo en la v3 |
+|---|---|
+| "No está subido a la red" | El ESP32 manda cada 10 s las mediciones y los pedidos de ayuda a un servidor en Railway con base de datos en Aiven. Ver [iteración 3](iteracion_3/README.md) |
+| "Achicar el plano del botón y del semáforo" | Pendiente en el diseño 3D: sacar la placa del botón y dejar solo los cables, y priorizar espacio en el semáforo |
 
-### Versión 1 (Iteración 1) - Concepto Inicial
-**Fecha:** [XX/XX/2025]  
-**Estado:** Prototipo alpha - Prueba de concepto
+## Lecciones aprendidas
 
-**Características:**
-- [Descripción breve]
-- Problemas principales identificados
-- Aprendizajes clave
+1. **Calibrar con datos reales, no con números supuestos.** Los umbrales iniciales (15 / 1000) hacían que el amarillo no apareciera nunca. Mirar la amplitud en el Monitor Serie permitió ajustarlos.
+2. **El WiFi de placas pequeñas necesita cuidado.** Las presiones perdidas del botón se resolvieron con interrupciones y desactivando el ahorro de energía, no cambiando de placa.
+3. **Guardar los datos cambia el valor del sistema.** Con el registro diario, el semáforo deja de ser solo una luz y pasa a responder preguntas del equipo docente, como si los pedidos de ayuda llegan después de momentos de ruido alto.
+4. **Revisar el cableado contra el código.** Los colores cambiados del LED en la v3 venían de pines distintos a los del código, no de un error en el programa.
 
-### Versión 2 (Iteración 2) - Primera Mejora
-**Fecha:** [XX/XX/2025]  
-**Estado:** Prototipo funcional mejorado
+## Detalle por versión
 
-**Mejoras implementadas:**
-- [Mejora 1]
-- [Mejora 2]
-
-**Problemas pendientes:**
-- [Problema 1]
-- [Problema 2]
-
-### Versión 3 (Iteración 3) - Versión Final
-**Fecha:** [XX/XX/2025]  
-**Estado:** Prototipo de alta resolución
-
-**Mejoras finales:**
-- [Mejora 1]
-- [Mejora 2]
-
-**Resultado:**
-- Sistema robusto y probado
-- Listo para piloto en terreno
-
----
-
-## Justificación de Cambios
-
-### Hardware
-**De v1 a v2:**
-- Cambio: [Descripción]
-- Razón: [Justificación técnica]
-- Impacto: [Mejora cuantitativa]
-
-**De v2 a v3:**
-- Cambio: [Descripción]
-- Razón: [Justificación técnica]
-- Impacto: [Mejora cuantitativa]
-
-### Software
-**De v1 a v2:**
-- [Cambios principales]
-
-**De v2 a v3:**
-- [Cambios principales]
-
-### Diseño 3D
-**De v1 a v2:**
-- [Cambios en encapsulado]
-
-**De v2 a v3:**
-- [Cambios finales]
-
----
-
-## Incorporación de Feedback
-
-### Feedback del Avance #1 → Cambios en v2
-1. [Comentario profesor/ayudante]
-   - Acción tomada: [Descripción]
-
-### Feedback del Avance #2 → Cambios en v3
-1. [Comentario profesor/ayudante]
-   - Acción tomada: [Descripción]
-
-### Feedback de Usuarios → Cambios en v3
-1. [Comentario común de usuarios]
-   - Acción tomada: [Descripción]
-
----
-
-## Métricas de Mejora
-
-| Métrica | v1 | v2 | v3 | Mejora Total |
-|---------|----|----|----| -------------|
-| Tiempo respuesta (ms) | 500 | 200 | 100 | ↓80% |
-| Consumo (mA) | 250 | 180 | 120 | ↓52% |
-| Tasa de errores (%) | 15 | 5 | 1 | ↓93% |
-| Satisfacción usuario (1-5) | 3.0 | 3.8 | 4.5 | ↑50% |
-
----
-
-## Lecciones Aprendidas
-
-### Técnicas
-- [Lección 1]
-- [Lección 2]
-
-### De Proceso
-- [Lección 1]
-- [Lección 2]
-
-### De Trabajo en Equipo
-- [Lección 1]
-- [Lección 2]
+- [Iteración 1](iteracion_1/README.md)
+- [Iteración 2](iteracion_2/README.md)
+- [Iteración 3](iteracion_3/README.md)

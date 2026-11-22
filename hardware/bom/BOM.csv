@@ -1,0 +1,12 @@
+﻿Ref,Componente,Cantidad,Costo unitario CLP,Subtotal CLP,Función
+U1,ESP32 DevKit,1,,,Módulo central: mide el ruido y controla las luces
+SN1,Sensor de sonido KY-038,1,,,Mide el ruido de la sala
+D1,LED RGB de cátodo común,1,,,Semáforo (verde / amarillo / rojo)
+D2,LED azul,1,,,Luz de ayuda del estudiante
+U2,ESP32-C3 SuperMini,1,,,Módulo del botón del estudiante
+SW1,Pulsador,1,,,Pedido de ayuda
+W1,Cables dupont,1,,,Conexiones
+PS1,Cargador USB de 5 V,2,,,Alimentación de cada módulo
+E1,Carcasa del semáforo impresa en PLA,1,,,Encapsulado del módulo central
+E2,Carcasa del botón impresa en PLA,1,,,Encapsulado del módulo del estudiante
+,TOTAL,,,,

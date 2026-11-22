@@ -1,107 +1,36 @@
-# Iteración 1 - Concepto Inicial
+# Iteración 1, semáforo de ruido
 
-## Información General
+**Versión:** v1 · **Fecha:** septiembre a octubre de 2026 (el equipo puede precisar la fecha) · **Estado:** prueba de concepto
 
-**Fecha:** [XX/XX/2025]  
-**Versión:** v1.0  
-**Estado:** Prototipo alpha - Prueba de concepto  
-**Avance asociado:** Planificación inicial / Avance #1
+## Qué se hizo
 
----
+Un ESP32 DevKit leía el micrófono KY-038 y encendía un LED RGB en verde, amarillo o rojo según la amplitud del sonido. El ESP32 se conectaba al hotspot de un iPhone y los resultados se veían en el Monitor Serie.
 
-## Descripción
+## Componentes
 
-Primera versión del prototipo, enfocada en validar la factibilidad técnica del concepto.
+- ESP32 DevKit
+- Sensor de sonido KY-038 (AO → GPIO 34)
+- LED RGB de cátodo común (GPIO 25, 26 y 27)
+- Arduino IDE 2.x, sin librerías externas
 
-**Objetivo de esta iteración:**
-- Probar conexión de sensores básicos
-- Validar comunicación con microcontrolador
-- Demostrar concepto de actuación
-- Circuito básico en protoboard
+## Qué se probó
 
----
+Con el programa [prueba_sensor_un_led.ino](../../software/src/pruebas/prueba_sensor_un_led/prueba_sensor_un_led.ino) se comprobó que el KY-038 mide el ruido y que el LED cambia de color antes de agregar WiFi y botón.
 
-## Componentes Utilizados
+## Problemas encontrados
 
-### Hardware
-- Microcontrolador: [Modelo]
-- Sensores:
-  - [Sensor 1]
-  - [Sensor 2]
-- Actuadores:
-  - [Actuador 1]
-- Otros: [Lista]
+1. **El amarillo no se veía.** El Monitor Serie indicaba el color correcto, pero el LED pasaba de verde a rojo muy rápido. Los umbrales de prueba (15 / 1000) no correspondían a las amplitudes reales de la sala.
+2. **Dependía de un celular.** Sin el hotspot del iPhone el sistema no tenía red.
+3. **No había forma de pedir ayuda.** El estudiante no tenía cómo avisar si se sentía sobrepasado antes de que el ruido llegara al rojo.
 
-### Software
-- IDE: Arduino IDE
-- Librerías: [Lista]
-- Versión código: v1.0
+## Decisión
 
----
+- Calibrar los umbrales observando la amplitud en el Monitor Serie (quedaron en 17 / 42).
+- Que el ESP32 cree su propia red WiFi, para no depender de un celular.
+- Agregar un botón en el escritorio del estudiante y una segunda luz en la pizarra.
 
-## Fotos del Prototipo
+Estos cambios forman la [iteración 2](../iteracion_2/README.md).
 
-Incluir en esta carpeta:
-- `v1_circuito_protoboard.jpg`
-- `v1_vista_general.jpg`
-- `v1_detalle_conexiones.jpg`
+## Fotos
 
----
-
-## Resultados de Testing Inicial
-
-### Funcionalidad Lograda
-✅ [Función 1]  
-✅ [Función 2]  
-❌ [Función 3 - no funcionó]
-
-### Problemas Identificados
-
-1. **Problema 1:**
-   - Descripción: [Detalles]
-   - Causa probable: [Análisis]
-   - Solución propuesta: [Plan]
-
-2. **Problema 2:**
-   - Descripción: [Detalles]
-   - Causa probable: [Análisis]
-   - Solución propuesta: [Plan]
-
----
-
-## Aprendizajes
-
-### Técnicos
-- [Aprendizaje 1]
-- [Aprendizaje 2]
-
-### De Diseño
-- [Aprendizaje 1]
-- [Aprendizaje 2]
-
----
-
-## Plan para Iteración 2
-
-### Mejoras Planificadas
-
-**Hardware:**
-- [ ] [Mejora 1]
-- [ ] [Mejora 2]
-
-**Software:**
-- [ ] [Mejora 1]
-- [ ] [Mejora 2]
-
-**Diseño:**
-- [ ] Iniciar diseño de encapsulado
-- [ ] Mejorar ruteo de cables
-
----
-
-## Archivos en esta Carpeta
-
-- `v1_codigo.ino` - Código de esta versión
-- `v1_esquema.png` - Esquema del circuito
-- `v1_fotos/` - Fotografías del prototipo
-- `v1_notas.txt` - Notas adicionales del equipo
+Pendiente: agregar fotos del prototipo v1 en esta carpeta.

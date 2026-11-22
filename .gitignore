@@ -1,0 +1,11 @@
+# Claves y dependencias de la pagina web (nunca subir el .env)
+.env
+node_modules/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Compilaciones de Arduino
+build/
