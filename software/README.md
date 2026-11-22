@@ -16,7 +16,7 @@ Esta carpeta reúne todo el código del sistema y su documentación. Está divid
 | Equipo | Lenguaje | Piezas principales |
 |---|---|---|
 | ESP32 DevKit (central, pizarra) | C++ con Arduino IDE 2.x | WiFi, WebServer, HTTPClient, WiFiClientSecure, ArduinoJson 7 |
-| ESP32-C3 SuperMini (botón) | C++ con Arduino IDE 2.x | WiFi, HTTPClient |
+| ESP32-S3 SuperMini (botón) | C++ con Arduino IDE 2.x | WiFi, HTTPClient |
 | Servidor en Railway | JavaScript con Node.js 18 o superior | Express 4, pg 8, dotenv 16 |
 | Base de datos | SQL | PostgreSQL en Aiven (plan Free) |
 | Página web | HTML, CSS y JavaScript | Chart.js 4.4.1, sin otras dependencias |
@@ -24,7 +24,7 @@ Esta carpeta reúne todo el código del sistema y su documentación. Está divid
 ## Cómo se conectan las piezas
 
 ```
-[Botón ESP32-C3] ──WiFi local──► [ESP32 central] ──HTTPS──► [Servidor Express] ──SSL──► [PostgreSQL]
+[Botón ESP32-S3] ──WiFi local──► [ESP32 central] ──HTTPS──► [Servidor Express] ──SSL──► [PostgreSQL]
                                      │                              ▲
                                      └─► LED RGB + luz de ayuda      └── Página web (navegador)
 ```
@@ -60,8 +60,9 @@ El ESP32 nunca se conecta directo a la base de datos: siempre pasa por el servid
 ### 3. Cargar el botón del estudiante
 
 1. Abrir `src/boton_estudiante/boton_estudiante.ino`.
-2. Placa **ESP32C3 Dev Module** (o *Nologo ESP32C3 Super Mini*), con *USB CDC On Boot* activado para ver el Monitor Serie.
-3. Subir. El LED integrado parpadea mientras busca la red y queda fijo cuando la solicitud está activa.
+2. Placa **ESP32S3 Dev Module**, con *USB CDC On Boot* activado para ver el Monitor Serie.
+3. Subir. El LED de la placa parpadea en azul mientras busca la red `AulaRuido`. Al apretar el botón se pone verde 3 s si el aviso llegó, o rojo si no llegó.
+4. Si `rgbLedWrite` no compila, cambiarlo por `neopixelWrite` (depende de la versión del paquete ESP32).
 
 ### 4. Servidor y página web
 

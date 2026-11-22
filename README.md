@@ -37,7 +37,7 @@ La solución IoT es un sistema de detección acústica y comunicación audiovisu
 
 ```
 Botón del estudiante ──WiFi local──► ESP32 central (pizarra) ──► LED RGB del semáforo + luz de ayuda
-   (ESP32-C3 SuperMini)                    │
+   (ESP32-S3 SuperMini)                    │
                                            │ HTTPS + JSON, cada 10 s
                                            ▼
                            Servidor Node.js + Express (Railway) ──SQL con SSL──► PostgreSQL (Aiven)
@@ -101,6 +101,16 @@ Botón del estudiante ──WiFi local──► ESP32 central (pizarra) ──�
 | Presentación 5 % | Claridad, demo y preguntas | [documentacion/presentacion](documentacion/presentacion) |
 | Proceso iterativo | Versiones v1, v2 y v3 | [iteraciones](iteraciones/README.md) |
 
+## Componentes para replicar el hardware
+
+| Módulo | Componentes |
+|---|---|
+| Central (pizarra) | ESP32 DevKit, micrófono KY-038, LED RGB de cátodo común, LED azul, cargador USB de 5 V, caja de MDF de 10 × 17 × 8 cm |
+| Botón (escritorio) | ESP32-S3 SuperMini, pulsador, batería LiPo de 3,7 V |
+| Internet | Celular con hotspot de 2.4 GHz |
+
+Conexiones y pines en [hardware/bom](hardware/bom/README.md).
+
 ## Inicio rápido
 
 ### Requisitos previos
@@ -119,7 +129,7 @@ Abrir https://semaforoenlinea.up.railway.app. Si el ESP32 está encendido y con 
 1. Abrir `software/src/central_nube/central_nube.ino` en Arduino IDE.
 2. Cambiar `WIFI_SSID`, `WIFI_PASS` y `API_KEY` por los datos reales. **No subir esos datos a GitHub.**
 3. Elegir la placa **ESP32 Dev Module**, el puerto y subir.
-4. Cargar el botón del estudiante (`software/src/boton_estudiante`) en la ESP32-C3 SuperMini.
+4. Cargar el botón del estudiante (`software/src/boton_estudiante`) en la ESP32-S3 SuperMini (placa **ESP32S3 Dev Module**, *USB CDC On Boot* activado).
 
 Los detalles, la configuración de la base de datos y cómo correr el servidor en el computador están en [software/README.md](software/README.md).
 
@@ -161,7 +171,6 @@ Los detalles, la configuración de la base de datos y cómo correr el servidor e
 - Fotos del prototipo armado, modelo 3D completo y planos.
 - Pruebas con al menos 5 usuarios reales, con evidencia.
 - Precios del BOM.
-- Confirmar con el equipo qué versión del código es la final. Ver [software/src/README.md](software/src/README.md#diferencias-entre-versiones).
 - Reporte final y presentación.
 
 ## Licencia

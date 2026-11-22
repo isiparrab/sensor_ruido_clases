@@ -6,33 +6,28 @@ La lista completa con columnas de costo está en [BOM.csv](BOM.csv). **Faltan lo
 
 | Componente | Cant. | Conexión |
 |---|---|---|
-| ESP32 DevKit | 1 | — |
+| ESP32 DevKit | 1 | Alimentación por USB |
 | Sensor de sonido KY-038 | 1 | AO → GPIO 34 |
-| LED RGB del semáforo (cátodo común) | 1 | Ver tabla de pines por versión, "-" → GND |
-| LED de aviso azul (luz de ayuda) | 1 | Ver tabla de pines por versión, "-" → GND |
+| LED RGB del semáforo (cátodo común) | 1 | R → GPIO 27, G → GPIO 26, B → GPIO 25 (no se usa), "-" → GND |
+| LED de aviso azul (luz de ayuda) | 1 | GPIO 13, "-" → GND |
 
 ## Módulo del estudiante (botón)
 
 | Componente | Cant. | Conexión |
 |---|---|---|
-| ESP32-C3 SuperMini | 1 | — |
-| Pulsador | 1 | GPIO 4 y GND (pull-up interno) |
-| LED de confirmación | — | LED integrado de la placa (GPIO 8, activo en LOW) |
+| ESP32-S3 SuperMini | 1 | — |
+| Pulsador | 1 | GPIO 5 y GND (pull-up interno) |
+| LED de confirmación | — | LED RGB integrado de la placa (GPIO 48) |
+| Batería LiPo de 3,7 V | 1 | Pines B+ y B- de la placa |
 
 ## Encapsulado
 
 | Pieza | Cant. | Material |
 |---|---|---|
-| Carcasa del semáforo | 1 | Impresión 3D (PLA) |
-| Carcasa del botón | 1 | Impresión 3D (PLA) |
+| Caja del semáforo, 10 × 17 × 8 cm | 1 | MDF y acrílico cortados con láser, tapa atornillada |
+| Carcasa del botón | 1 | Por confirmar |
+| Tornillos de la tapa | Por confirmar | — |
 
-## Pines por versión del código
+## Versión anterior (v2)
 
-El equipo debe confirmar cuál es la versión final. Ver [software/src/README.md](../../software/src/README.md#diferencias-entre-versiones).
-
-| Señal | `central.ino` (v2) | `central_nube.ino` (v3) |
-|---|---|---|
-| Semáforo, rojo | GPIO 25 | GPIO 27 |
-| Semáforo, verde | GPIO 26 | GPIO 26 |
-| Semáforo, azul (no se usa) | GPIO 27 | GPIO 25 |
-| Luz de ayuda | LED RGB #2 en blanco: GPIO 12, 13 y 14 | LED azul: GPIO 13 |
+En la v2, el LED del semáforo usaba R 25, G 26 y B 27, y la luz de solicitud era un segundo LED RGB en blanco (GPIO 12, 13 y 14). El botón era una ESP32-C3 SuperMini con el pulsador en el GPIO 4 y su LED en el GPIO 8. Ver [software/src/README.md](../../software/src/README.md#diferencias-entre-versiones).

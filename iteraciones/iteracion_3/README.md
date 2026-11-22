@@ -18,10 +18,13 @@ El feedback del Avance 2 fue que el sistema **no estaba subido a la red**, y el 
 | Motivo del pedido | — | Al apagar la luz, la profesora elige por qué pidió ayuda el estudiante y puede escribir una nota |
 | Historial | — | Registro diario con calendario, reporte de cada día, relación ruido–ayuda y descarga a Excel |
 | Envíos a internet | — | En el otro núcleo del ESP32, para que el semáforo no se congele mientras se envía |
+| Botón del estudiante | ESP32-C3 SuperMini con cable, LED de un color | ESP32-S3 SuperMini con batería LiPo. Su LED RGB muestra si busca la red (azul), si el aviso llegó (verde) o si no llegó (rojo) |
+| Encapsulado del semáforo | Modelo en Onshape | Caja de MDF y acrílico cortada con láser (10 × 17 × 8 cm), con uniones dentadas y tapa atornillada |
 
 ## Archivos de esta versión
 
-- Código del ESP32: [software/src/central_nube/central_nube.ino](../../software/src/central_nube/central_nube.ino)
+- Código del ESP32 central: [software/src/central_nube/central_nube.ino](../../software/src/central_nube/central_nube.ino)
+- Código del botón: [software/src/boton_estudiante/boton_estudiante.ino](../../software/src/boton_estudiante/boton_estudiante.ino)
 - Servidor y página: [software/web](../../software/web/README.md)
 - Cómo se capturan y usan los datos: [software/docs/captura_y_datos.md](../../software/docs/captura_y_datos.md)
 
@@ -49,7 +52,6 @@ Prueba con el hardware real del 22-11-2026, de 08:00 a 09:01 (datos en [testing/
 
 ## Pendiente para cerrar la versión
 
-- Confirmar con el equipo la versión final del código. Hay diferencias entre `central.ino` y `central_nube.ino` en umbrales, pines, nombre de la red y ruta del botón (ver [software/src/README.md](../../software/src/README.md#diferencias-entre-versiones)).
 - Achicar el encapsulado del botón y del semáforo, según el feedback del Avance 2.
 - Probar con al menos 5 usuarios en una sala real.
 - Fotos del prototipo v3.
