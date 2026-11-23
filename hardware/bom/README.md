@@ -4,7 +4,7 @@ La lista completa con costos está en [BOM.csv](BOM.csv).
 
 ## Costo de referencia
 
-Precios de tiendas chilenas consultados el 22-11-2026 (IVA incluido, sin despacho). Son **precios de referencia**, no lo que pagó el equipo: pueden cambiar y algunos productos estaban agotados.
+Precios de tiendas chilenas como referencia. Son **precios de referencia**, por lo que algunos valores pueden variar.
 
 | Componente | Cant. | Costo CLP | Referencia |
 |---|---|---|---|
