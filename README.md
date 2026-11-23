@@ -14,13 +14,13 @@ Sistema IoT que mide el ruido de la sala, lo muestra como un semáforo (verde, a
 - **ODS seleccionados**
   - ODS 4, Educación de calidad
   - ODS 10, Reducción de las desigualdades
-- **Problema a resolver** La falta de herramientas didácticas atractivas que ayuden a niños con Trastorno del Espectro Autista (TEA) ante crisis provocadas por la desregulación del ruido ambiental, cuando este supera su umbral de tolerancia acústica.
+- **Problema a resolver** El ruido excesivo en la sala de clases afecta la concentración y el bienestar de todos los estudiantes, y en especial de quienes tienen hipersensibilidad auditiva, como muchos niños con Trastorno del Espectro Autista (TEA). Además, faltan herramientas para que un estudiante pida ayuda en silencio cuando se siente sobrepasado.
 
 ## Descripción del proyecto
 
 La solución IoT es un sistema de detección acústica y comunicación audiovisual silenciosa, compuesto por dos unidades conectadas: el **módulo central**, junto a la pizarra, y el **módulo del estudiante**, en su escritorio. Funciona con una lógica de doble entrada (automática y manual) pensada para prevenir desregulaciones sin agregar ruido a la sala.
 
-- **Entrada automática.** El módulo central mide el ruido de la sala en tiempo real con un micrófono y enciende una luz tenue: verde cuando se respeta el umbral, amarilla cuando está pronto a superarse y roja cuando se supera. El umbral de tolerancia promedio en niños con TEA e hipersensibilidad auditiva está entre 50 y 60 dB.
+- **Entrada automática.** El módulo central mide el ruido de la sala en tiempo real con un micrófono y enciende una luz tenue: verde cuando el ruido es adecuado, amarilla cuando está pronto a superar el umbral y roja cuando lo supera. Los umbrales se calibraron con pruebas en la sala.
 - **Entrada manual.** El estudiante tiene en su escritorio un botón que enciende una luz de aviso en la pizarra si siente sobrecarga o angustia sensorial antes de que se alcance el umbral.
 - **Respuesta docente.** La profesora identifica la necesidad de forma inmediata y silenciosa, baja el volumen del grupo o interviene, y luego marca la ayuda como atendida desde la página web.
 - **Registro en la nube.** El módulo central manda cada medición y cada pedido de ayuda a un servidor en Railway, que los guarda en PostgreSQL (Aiven). La página muestra el estado en vivo, un calendario con el reporte de cada día y la relación entre el ruido y los pedidos de ayuda.
