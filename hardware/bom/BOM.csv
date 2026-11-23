@@ -1,14 +1,14 @@
-﻿Ref,Componente,Cantidad,Costo unitario CLP,Subtotal CLP,Función
-U1,ESP32 DevKit,1,,,Módulo central: mide el ruido y controla las luces
-SN1,Sensor de sonido KY-038,1,,,Mide el ruido de la sala
-D1,LED RGB de cátodo común,1,,,Semáforo (verde / amarillo / rojo)
-D2,LED azul,1,,,Luz de ayuda del estudiante
-U2,ESP32-S3 SuperMini,1,,,Módulo del botón del estudiante
-BT1,Batería LiPo de 3.7 V,1,,,Alimentación del botón
-SW1,Pulsador,1,,,Pedido de ayuda
-W1,Cables dupont,1,,,Conexiones
-PS1,Cargador USB de 5 V,1,,,Alimentación del módulo central
-E1,"Caja del semáforo en MDF y acrílico (corte láser, 10 x 17 x 8 cm)",1,,,Encapsulado del módulo central
-E2,Carcasa del botón impresa en 3D,1,,,Encapsulado del módulo del estudiante
-H1,Tornillos de la tapa,4,,,Cierre desmontable de la caja
-,TOTAL,,,,
+﻿Ref,Componente,Cantidad,Costo unitario CLP,Subtotal CLP,Función,Referencia de precio
+U1,ESP32 DevKit,1,8990,8990,Módulo central: mide el ruido y controla las luces,MCI Electronics (ESP32 30 pines USB-C)
+SN1,Sensor de sonido KY-038,1,2990,2990,Mide el ruido de la sala,Ukrabot
+D1,LED RGB de cátodo común,1,100,100,Semáforo (verde / amarillo / rojo),Afel (LED RGB 5 mm)
+D2,LED azul,1,506,506,Luz de ayuda del estudiante,Altronics (pack de 10 LED azules 5 mm)
+U2,ESP32-S3 SuperMini,1,9990,9990,Módulo del botón del estudiante,Afel
+BT1,Batería LiPo de 3.7 V,1,6290,6290,Alimentación del botón,Mercado Libre (LiPo 3.7 V 500 mAh)
+SW1,Pulsador,1,500,500,Pedido de ayuda,Estimado (no se encontró precio publicado)
+W1,Cables dupont,1,2490,2490,Conexiones,Maxelectronica (pack de 40 hembra-hembra)
+PS1,Cargador USB de 5 V,1,6990,6990,Alimentación del módulo central,Paris (cargador USB con cable micro USB)
+E1,"Caja del semáforo en MDF y acrílico (corte láser, 10 x 17 x 8 cm)",1,5350,5350,Encapsulado del módulo central,Sodimac MDF 3 mm 40x40 ($1.390) + DesignTec acrílico 3 mm 30x40 ($3.960); sin costo de corte
+E2,Carcasa del botón impresa en 3D,1,550,550,Encapsulado del módulo del estudiante,Estimado: ~50 g de PLA de 1 kg a $10.990 (Webco)
+H1,Tornillos de la tapa,4,65,260,Cierre desmontable de la caja,Mechatronicstore (pack de 20 M3 con tuerca a $1.290)
+,TOTAL,,,45006,,Precios de referencia consultados el 22-11-2026
