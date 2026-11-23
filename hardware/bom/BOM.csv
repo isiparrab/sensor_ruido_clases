@@ -2,7 +2,7 @@
 U1,ESP32 DevKit,1,8990,8990,Módulo central: mide el ruido y controla las luces,MCI Electronics (ESP32 30 pines USB-C)
 SN1,Sensor de sonido KY-038,1,2990,2990,Mide el ruido de la sala,Ukrabot
 D1,LED RGB de cátodo común,1,100,100,Semáforo (verde / amarillo / rojo),Afel (LED RGB 5 mm)
-D2,LED azul,1,506,506,Luz de ayuda del estudiante,Altronics (pack de 10 LED azules 5 mm)
+D2,LED RGB de cátodo común,1,100,100,Luz de ayuda del estudiante (enciende en azul),Afel (LED RGB 5 mm)
 U2,ESP32-S3 SuperMini,1,9990,9990,Módulo del botón del estudiante,Afel
 BT1,Batería LiPo de 3.7 V,1,6290,6290,Alimentación del botón,Mercado Libre (LiPo 3.7 V 500 mAh)
 SW1,Pulsador,1,,,Pedido de ayuda,Sin precio
@@ -11,4 +11,4 @@ PS1,Cargador USB de 5 V,1,6990,6990,Alimentación del módulo central,Paris (car
 E1,"Caja del semáforo en MDF y acrílico (corte láser, 10 x 17 x 8 cm)",1,4590,4590,Encapsulado del módulo central,Sodimac MDF 3 mm 40x40 ($1.390) + DesignTec acrílico 5 mm 30x40 ($3.200); sin costo de corte
 E2,Carcasa del botón impresa en 3D,1,,,Encapsulado del módulo del estudiante,Sin precio
 H1,Tornillos de la tapa,4,65,260,Cierre desmontable de la caja,Mechatronicstore (pack de 20 M3 con tuerca a $1.290)
-,TOTAL,,,43196,,Precios de referencia consultados el 22-11-2026 (sin pulsador ni carcasa del botón)
+,TOTAL,,,42790,,Precios de referencia consultados el 22-11-2026 (sin pulsador ni carcasa del botón)

@@ -34,7 +34,7 @@ Los renders muestran la caja con los componentes en su lugar ([interior](renders
 | ESP32 DevKit | Al fondo de la caja, con el USB hacia la salida del cable |
 | Micrófono KY-038 | Frente al hoyo del micrófono, para captar el sonido de la sala |
 | LED RGB del semáforo | Soporte superior, detrás de la ventana de arriba |
-| LED azul de ayuda | Soporte inferior, detrás de la ventana de abajo |
+| LED RGB de la luz de ayuda (en azul) | Soporte inferior, detrás de la ventana de abajo |
 | Ventanas de acrílico | Difuminan la luz para que sea tenue y no moleste |
 | Cable USB | Sale por un costado hacia el cargador |
 | Orejas del fondo | Permiten colgar la caja junto a la pizarra |

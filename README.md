@@ -105,7 +105,7 @@ Botón del estudiante ──WiFi local──► ESP32 central (pizarra) ──�
 
 | Módulo | Componentes |
 |---|---|
-| Central (pizarra) | ESP32 DevKit, micrófono KY-038, LED RGB de cátodo común, LED azul, cargador USB de 5 V, caja de MDF de 10 × 17 × 8 cm |
+| Central (pizarra) | ESP32 DevKit, micrófono KY-038, 2 LED RGB de cátodo común (semáforo y luz de ayuda azul), cargador USB de 5 V, caja de MDF de 10 × 17 × 8 cm |
 | Botón (escritorio) | ESP32-S3 SuperMini, pulsador, batería LiPo de 3,7 V |
 | Internet | Celular con hotspot de 2.4 GHz |
 
@@ -138,7 +138,7 @@ Los detalles, la configuración de la base de datos y cómo correr el servidor e
 ### Hardware
 
 - [x] Esquema del circuito, [esquemático completo v3](hardware/esquemas/README.md) y simulación en Wokwi
-- [x] Lista de componentes, [BOM](hardware/bom/README.md) con precios de referencia (total ≈ $43.000)
+- [x] Lista de componentes, [BOM](hardware/bom/README.md) con precios de referencia (total ≈ $42.800)
 - [ ] Fotos de alta resolución del prototipo armado
 
 ### Software
