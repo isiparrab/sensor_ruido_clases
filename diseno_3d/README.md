@@ -54,7 +54,8 @@ Los renders muestran la caja con los componentes en su lugar ([interior](renders
 | Fabricación | Impresión 3D |
 | Qué va adentro | ESP32-S3 SuperMini, batería LiPo de 3,7 V y pulsador |
 | Dimensiones externas | *Completar* |
-| Material, impresora y tiempo de impresión | *Completar* |
+| Tiempo de impresión | Aproximadamente 1 hora |
+| Material e impresora | *Completar* |
 
 ## Pendiente
 
