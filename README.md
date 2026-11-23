@@ -138,7 +138,7 @@ Los detalles, la configuración de la base de datos y cómo correr el servidor e
 ### Hardware
 
 - [x] Esquema del circuito, [simulación en Wokwi](hardware/esquemas/README.md)
-- [x] Lista de componentes, [BOM](hardware/bom/README.md) con precios de referencia (total ≈ $45.000)
+- [x] Lista de componentes, [BOM](hardware/bom/README.md) con precios de referencia (total ≈ $44.000)
 - [ ] Fotos de alta resolución del prototipo armado
 
 ### Software
