@@ -20,7 +20,7 @@ Precios de tiendas chilenas consultados el 22-11-2026 (IVA incluido, sin despach
 | Tornillos M3 con tuerca | 4 | 260 | [Mechatronicstore](https://www.mechatronicstore.cl/20-piezas-tornillo-m3-con-tuerca/) (pack de 20 a $1.290) |
 | **Total** | | **43.956** | |
 
-No incluye el pulsador ni la carcasa impresa en 3D, porque no se encontró su precio. Tampoco incluye el servicio de corte láser, solo el material. Si el equipo compró algo a otro precio, conviene reemplazarlo por lo que pagó.
+No incluye el pulsador ni la carcasa impresa en 3D, porque no se encontró su precio. Tampoco incluye el servicio de corte láser, solo el material. 
 
 ## Módulo central (pizarra)
 
