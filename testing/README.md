@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Comprobar que el prototipo mide bien el ruido, que el pedido de ayuda llega y se atiende rápido, y que la información sirve a la profesora para cuidar a los estudiantes con TEA.
+Comprobar que el prototipo mide bien el ruido, que el pedido de ayuda llega y se atiende rápido, y que la información sirve a la profesora para cuidar el bienestar de los estudiantes, en especial de quienes tienen hipersensibilidad auditiva.
 
 | Nivel | Qué se prueba | Estado |
 |---|---|---|

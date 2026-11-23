@@ -8,7 +8,7 @@ Encapsulados de los dos módulos del sistema: la caja del semáforo, que va junt
 |---|---|
 | [renders/](renders/README.md) | Renders de la caja v5 (exterior, interior, explosionado y frente) y de las versiones anteriores |
 | [fusion360/](fusion360/README.md) | Gemelo 3D de la caja v5 con todos los componentes: [Semaforo_TEI_v5_gemelo.step](fusion360/Semaforo_TEI_v5_gemelo.step) |
-| [planos/](planos/README.md) | Planos técnicos con cotas (pendiente) |
+| [planos/](planos/README.md) | Planos con cotas de la caja v5: [Planos_Semaforo_TEI_v5.pdf](planos/Planos_Semaforo_TEI_v5.pdf) |
 
 ## Caja del semáforo (versión final, v5)
 
@@ -59,6 +59,5 @@ Los renders muestran la caja con los componentes en su lugar ([interior](renders
 
 ## Pendiente
 
-- Planos con cotas de la caja v5 en [planos/](planos/README.md).
 - Render de la carcasa final del botón con sus componentes dentro.
 - Completar los datos marcados arriba.

@@ -1,86 +1,16 @@
-# Planos Técnicos
+# Planos técnicos
 
-## Planos Requeridos
+[Planos_Semaforo_TEI_v5.pdf](Planos_Semaforo_TEI_v5.pdf): planos de la caja del semáforo v5, en milímetros.
 
-### 1. Plano de Conjunto
-`plano_conjunto_v3.pdf`
+| Hoja | Contenido | Escala |
+|---|---|---|
+| 1 | Ensamble general: vistas frontal, lateral izquierda y superior, cotas generales (100 × 170 × 80 mm), tabla de piezas y notas de fabricación | 1:2 |
+| 2 | Piezas grandes: fondo con orejas, tapa frontal y laterales, con la posición de cada agujero | 1:2 |
+| 3 | Piezas chicas: paredes superior e inferior, repisa del micrófono, triángulos de la tapa y soportes de los LED | 1:1 |
 
-Incluir:
-- Vistas principales (frontal, lateral, superior)
-- Escala apropiada
-- Cotas principales externas
-- Tabla de piezas
+## Notas de fabricación (resumen)
 
-### 2. Planos de Detalle
-Para cada componente crítico del encapsulado:
-- Cotas completas
-- Tolerancias importantes
-- Notas de fabricación
-
----
-
-## Estándares de Planos
-
-### Vistas Ortogonales Requeridas
-- Vista Frontal
-- Vista Superior
-- Vista Lateral Derecha
-- Vista Isométrica (referencia)
-
-### Cortes
-- Corte A-A: Sección transversal mostrando interior
-- Corte B-B: (si es necesario para claridad)
-
----
-
-## Formato de Planos
-
-**Tamaño de hoja:** A4 o A3  
-**Orientación:** Según convenga  
-**Escala:** 1:1, 1:2, o según sea necesario  
-**Unidades:** Milímetros (mm)
-
-### Información en Cajetín
-- Título del proyecto
-- Nombre de la pieza/ensamble
-- Escala
-- Material
-- Fecha
-- Versión
-- Integrantes del equipo
-
----
-
-## Acotación
-
-### Reglas Generales
-- Cotas en milímetros sin unidad
-- Líneas de cota finas
-- Texto legible (mín. 2.5mm de altura)
-- Cotas críticas resaltadas
-
-### Tolerancias
-Indicar tolerancias para:
-- Orificios de tornillos: ±0.1mm
-- Encajes: +0.2mm / +0.0mm
-- Dimensiones generales: ±0.5mm
-
----
-
-## Exportación desde Fusion 360
-
-```
-Opción 1: Drawing (Plano tradicional)
-1. Create Drawing
-2. Configurar vistas y cotas
-3. Export como PDF
-
-Opción 2: Export directo
-File > Export > Formato PDF/DWG
-```
-
----
-
-## Archivos a Entregar
-
-- `plano_conjunto_v3.pdf` - Plano principal
+- Corte láser en el DEC UAI. La compensación del corte (kerf, 0,1 mm por lado) ya está aplicada en los DXF.
+- Uniones dentadas de 6 mm. La ranura es igual al espesor real del MDF, por eso hay que medir la plancha antes de cortar.
+- Agujeros de Ø3,2 para los 4 tornillos M3 de la tapa.
+- La tapa va atornillada y no lleva pegamento, para poder abrirla y reparar.

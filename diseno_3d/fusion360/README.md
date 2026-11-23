@@ -1,60 +1,17 @@
-# Archivos Fusion 360
+# Modelo 3D (gemelo digital)
 
-## Archivos Requeridos
+[Semaforo_TEI_v5_gemelo.step](Semaforo_TEI_v5_gemelo.step): ensamble completo de la caja del semáforo v5 con todos sus componentes, en milímetros.
 
-### `modelo_completo_v3.f3d`
-Archivo principal con **historial de cambios completo**
+El formato STEP se abre en Fusion 360 (*File > Open*), Onshape, FreeCAD o SolidWorks.
 
-**DEBE INCLUIR:**
--  Todos los componentes modelados
--  Ensamble completo funcional
--  Historial de diseño (timeline)
--  Materiales asignados
--  Constraints y relaciones
+## Componentes del ensamble
 
----
+| Grupo | Piezas |
+|---|---|
+| Caja de MDF | Fondo, tapa atornillada, lateral izquierdo con salida de cable, lateral derecho, paredes superior e inferior, 4 triángulos de la tapa |
+| Ventanas | Acrílico del semáforo y acrílico de la luz de ayuda |
+| Soportes | Repisa del micrófono, placas y bases porta-LED (2 de cada una) |
+| Electrónica | ESP32 DevKit (módulo WROOM y pines), protoboard, micrófono KY-038 con su cápsula, módulos LED RGB del semáforo y de la luz de ayuda |
+| Cableado | Cable USB de alimentación |
 
-## Estructura del Modelo
-
-### Componentes (Components)
-```
-Ensamble_Principal
-├── Encapsulado_Inferior
-├── Encapsulado_Superior
-├── ESP32_DevKit
-├── Sensor_DHT22
-├── LED_Indicador
-├── Soporte_Bateria
-├── Bracket_Montaje
-└── Tornilleria
-```
-
-### Uniones (Joints)
-Documentar las juntas principales y sus restricciones
-
-### Parámetros
-Listar parámetros principales utilizados:
-- `ancho_total = 120mm`
-- `alto_total = 80mm`
-- `grosor_pared = 2mm`
-
----
-
-## Instrucciones de Apertura
-
-1. Abrir Fusion 360
-2. File > Open > Seleccionar archivo `.f3d`
-3. Verificar que todas las referencias están cargadas
-4. Revisar timeline para ver historial
-
----
-
-## Versiones
-
-| Versión | Fecha | Cambios Principales |
-|---------|-------|---------------------|
-| v3.0 | [Fecha] | Versión final para Avance #3 |
-| v2.1 | [Fecha] | Ajustes post Avance #2 |
-| v1.0 | [Fecha] | Primera versión funcional |
-
----
+Renders de este modelo en [../renders](../renders/README.md) y planos en [../planos](../planos/README.md).

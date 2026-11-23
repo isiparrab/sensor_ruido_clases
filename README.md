@@ -50,7 +50,7 @@ Botón del estudiante ──WiFi local──► ESP32 central (pizarra) ──�
 
 - **Versión actual** v3, prototipo conectado a la nube
 - **Última actualización** 22-11-2026
-- **Estado** El semáforo, el envío de datos, la página web, el acceso de la profesora y el registro diario funcionan con el hardware real. Faltan la validación con usuarios, los planos, las fotos del prototipo y los documentos finales. Ver [Pendientes](#pendientes).
+- **Estado** El semáforo, el envío de datos, la página web, el acceso de la profesora y el registro diario funcionan con el hardware real. Faltan la validación con usuarios, las fotos del prototipo y los documentos finales. Ver [Pendientes](#pendientes).
 
 ## Resultados clave
 
@@ -94,7 +94,7 @@ Botón del estudiante ──WiFi local──► ESP32 central (pizarra) ──�
 | | Diseño para la reparación | [hardware/README.md](hardware/README.md) |
 | Diseño 3D 20 % | Gemelo 3D y modelado | [diseno_3d](diseno_3d/README.md): modelo STEP con todos los componentes y renders |
 | | Renders | [diseno_3d/renders](diseno_3d/renders) |
-| | Planos técnicos | [diseno_3d/planos](diseno_3d/planos) (pendiente) |
+| | Planos técnicos | [Planos_Semaforo_TEI_v5.pdf](diseno_3d/planos/Planos_Semaforo_TEI_v5.pdf) |
 | Testing 10 % | Protocolo de pruebas | [testing/reportes/protocolo_pruebas.md](testing/reportes/protocolo_pruebas.md) |
 | | Análisis de resultados y validación | [testing/README.md](testing/README.md) |
 | GitHub 5 % | Estructura y respaldo | Este repositorio y su historial de commits |
@@ -152,7 +152,7 @@ Los detalles, la configuración de la base de datos y cómo correr el servidor e
 
 - [x] Archivo 3D con todos los componentes, [Semaforo_TEI_v5_gemelo.step](diseno_3d/fusion360/Semaforo_TEI_v5_gemelo.step)
 - [x] Renders, [diseno_3d/renders](diseno_3d/renders)
-- [ ] Planos técnicos
+- [x] Planos técnicos, [Planos_Semaforo_TEI_v5.pdf](diseno_3d/planos/Planos_Semaforo_TEI_v5.pdf)
 
 ### Testing
 
@@ -168,7 +168,7 @@ Los detalles, la configuración de la base de datos y cómo correr el servidor e
 
 ## Pendientes
 
-- Fotos del prototipo armado y planos.
+- Fotos del prototipo armado.
 - Pruebas con al menos 5 usuarios reales, con evidencia.
 - Reporte final y presentación.
 
