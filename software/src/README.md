@@ -31,7 +31,7 @@ Los umbrales se calibraron mirando la amplitud en el Monitor Serie. Son unidades
 | Dato | v2 (`central.ino` + botón v2) | v3, final (`central_nube.ino` + botón v3) |
 |---|---|---|
 | Umbrales amarillo / rojo | 17 / 42 | 25 / 50 |
-| Pines del LED RGB del semáforo | R 25, G 26, B 27 | R 27, G 26, B 25 (corregido porque los colores salían cambiados en el prototipo) |
+| Pines del LED RGB del semáforo | R 25, G 26, B 27 | R 26, G 27, B 25 (corregido porque los colores salían cambiados en el prototipo) |
 | Luz de ayuda | LED RGB #2 en **blanco** (pines 12, 13 y 14) | LED **azul** en el pin 13 |
 | Red WiFi para el botón | `SemaforoAula` | `AulaRuido` |
 | Ruta que recibe el botón | `/boton` | `/aviso` |
@@ -41,4 +41,4 @@ Los umbrales se calibraron mirando la amplitud en el Monitor Serie. Son unidades
 
 ## Monitor Serie
 
-Todos los programas usan 115200 baudios. La central imprime la amplitud de cada medición, si hay internet, y el resultado de cada envío (`POST /api/lecturas ... -> 201`). El botón imprime `GET /aviso -> 200` cuando el aviso llega.
+Todos los programas usan 115200 baudios. La central imprime cada 10 s el promedio del ruido y su color (`Promedio 10 s: 18 -> verde`), si hay internet y el resultado de cada envío (`POST /api/lecturas ... -> 201`). El botón imprime `GET /aviso -> 200` cuando el aviso llega.

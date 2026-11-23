@@ -28,7 +28,7 @@ No incluye el pulsador ni la carcasa impresa en 3D, porque no se encontró su pr
 |---|---|---|
 | ESP32 DevKit | 1 | Alimentación por USB |
 | Sensor de sonido KY-038 | 1 | AO → GPIO 34 |
-| LED RGB del semáforo (cátodo común) | 1 | R → GPIO 27, G → GPIO 26, B → GPIO 25 (no se usa), "-" → GND |
+| LED RGB del semáforo (cátodo común) | 1 | R → GPIO 26, G → GPIO 27, B → GPIO 25 (no se usa), "-" → GND |
 | LED RGB de la luz de ayuda (cátodo común) | 1 | Pata azul → GPIO 13, "-" → GND. Solo se usa el color azul |
 
 ## Módulo del estudiante (botón)

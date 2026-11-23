@@ -36,7 +36,7 @@ El sistema tiene dos unidades separadas para que el estudiante pueda pedir ayuda
 
 ## Conexiones
 
-Los pines de la versión final están en [bom/README.md](bom/README.md). Los pines del LED RGB se ajustaron al cableado real del prototipo (R 27, G 26, B 25) porque los colores salían cambiados.
+Los pines de la versión final están en [bom/README.md](bom/README.md). Los pines del LED RGB se ajustaron al cableado real del prototipo (R 26, G 27, B 25) porque los colores salían cambiados.
 
 ## Diseño para la reparación
 
@@ -46,7 +46,7 @@ Los pines de la versión final están en [bom/README.md](bom/README.md). Los pin
 - **Programación por USB.** Las placas se actualizan con el mismo cable que las alimenta.
 - **Módulos independientes.** Si falla el botón, el semáforo sigue funcionando. Si se cae el internet, el semáforo sigue midiendo y encendiendo el LED, y vuelve a mandar datos solo cuando la red regresa.
 - **Los datos no viven en la placa.** Todo queda en la base de datos de la nube, así que cambiar un ESP32 dañado no borra el historial.
-- **Monitor Serie para diagnosticar.** El central imprime la amplitud medida, si tiene internet y el resultado de cada envío. Ver la tabla de problemas comunes en [software/docs](../software/docs/README.md#problemas-comunes).
+- **Monitor Serie para diagnosticar.** El central imprime el promedio del ruido de cada 10 s, si tiene internet y el resultado de cada envío. Ver la tabla de problemas comunes en [software/docs](../software/docs/README.md#problemas-comunes).
 
 ## Especificaciones
 

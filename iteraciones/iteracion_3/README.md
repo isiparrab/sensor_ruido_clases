@@ -32,9 +32,9 @@ El feedback del Avance 2 fue que el sistema **no estaba subido a la red**, y el 
 
 ## Problemas encontrados y soluciones
 
-1. **Los colores del LED salían cambiados.** El rojo se veía verde y el verde se veía azul. El código usaba R 25, G 26 y B 27, pero en el prototipo las patas estaban en otro orden. Se cambiaron los pines a R 27, G 26 y B 25 en `central_nube.ino`, y los colores quedaron correctos.
+1. **Los colores del LED salían cambiados.** El rojo se veía verde y el verde se veía azul. El código usaba R 25, G 26 y B 27, pero en el prototipo las patas estaban en otro orden. Se cambiaron los pines a R 26, G 27 y B 25 en `central_nube.ino`, y los colores quedaron correctos.
 2. **Mientras se enviaba un dato, el ESP32 no atendía el botón.** Un envío HTTPS tarda 1 a 2 s. Se movieron los envíos a una tarea en el núcleo 0 del ESP32, y la medición y el botón quedaron en el núcleo 1.
-3. **Avisos de ayuda que fallaban por la red.** Si el aviso no llega al servidor, el ESP32 reintenta cada 5 s hasta que se confirma.
+3. **Avisos de ayuda que fallaban por la red.** Si el aviso no llega al servidor, el ESP32 lo vuelve a intentar hasta que se confirma.
 4. **Datos sensibles.** Los motivos de los pedidos hablan de los estudiantes. Solo se muestran con la clave de la profesora, y la página sugiere no escribir nombres en las notas.
 5. **La página solo mostraba las últimas 60 mediciones.** Los datos sí estaban guardados. Se agregó el registro diario para revisar cualquier día completo.
 

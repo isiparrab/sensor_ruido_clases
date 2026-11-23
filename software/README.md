@@ -29,8 +29,8 @@ Esta carpeta reúne todo el código del sistema y su documentación. Está divid
                                      └─► LED RGB + luz de ayuda      └── Página web (navegador)
 ```
 
-1. El ESP32 central mide el ruido cada ~100 ms y enciende el LED RGB en verde, amarillo o rojo.
-2. Cada 10 s manda al servidor el promedio del ruido y su color (`POST /api/lecturas`).
+1. El ESP32 central mide el ruido cada ~100 ms y saca el promedio cada 10 s. Con ese promedio enciende el LED RGB en verde, amarillo o rojo, así la luz cambia como máximo una vez cada 10 s y no distrae a los niños.
+2. Manda ese mismo promedio y su color al servidor (`POST /api/lecturas`), por eso la luz y la página muestran siempre el mismo color.
 3. Cuando el botón del estudiante avisa, enciende la luz de ayuda y avisa al servidor (`POST /api/asistencia`).
 4. Mientras la ayuda está activa, pregunta cada 3 s si la profesora ya la atendió (`GET /api/estado`). Cuando la profesora marca "Ya atendí" en la página, el ESP32 apaga la luz.
 5. La página consulta el estado cada 3 s y muestra el semáforo, la ayuda, el resumen del día y el registro diario.
@@ -73,7 +73,7 @@ Ya están publicados en https://semaforoenlinea.up.railway.app. Para correrlos e
 - **Cada archivo explica qué hace.** Al inicio de cada archivo hay un comentario que cuenta para qué sirve, qué librerías usa y cómo fue cambiando.
 - **Los datos que se ajustan están juntos al principio.** La red WiFi, las claves, los umbrales del ruido y los pines están arriba del código, así se cambian fácil sin buscar por todo el archivo.
 - **El semáforo no se congela al mandar datos.** El ESP32 tiene dos "cerebros" (núcleos). Uno mide el ruido y atiende el botón; el otro manda los datos a internet, que demora 1 a 2 segundos. Así el semáforo sigue funcionando mientras se envía.
-- **Si un aviso no llega, se vuelve a intentar.** Si falla el envío de un pedido de ayuda, el ESP32 lo reintenta cada 5 segundos hasta que llega.
+- **Si un aviso no llega, se vuelve a intentar.** Si falla el envío de un pedido de ayuda, el ESP32 lo vuelve a intentar hasta que llega.
 - **El servidor solo guarda datos que tienen sentido.** Revisa que el ruido sea un número y que el color sea verde, amarillo o rojo. Si llega algo raro, no lo guarda.
 - **Las contraseñas no están en el código.** Se guardan en un archivo aparte (`.env`) que nunca se sube a GitHub, y en la configuración de Railway. Por eso el repositorio puede ser público sin mostrar las claves.
 - **Nadie puede romper la página escribiendo cosas raras.** Si alguien escribe código en una nota, la página lo muestra como texto normal y no lo ejecuta.

@@ -18,7 +18,7 @@ Botón del estudiante ──WiFi "AulaRuido"──► ESP32 central (semáforo)
 ```
 
 - **ESP32 central** (`software/src/central_nube/central_nube.ino`): mide el ruido con el
-  KY-038, enciende el LED RGB (verde, amarillo o rojo) y cada 10 s manda el promedio al
+  KY-038, cada 10 s saca el promedio, enciende el LED RGB con ese color y manda el promedio al
   servidor. Cuando el botón del estudiante avisa, enciende el LED azul y avisa al servidor.
 - **Servidor** (`server.js`): Node.js + Express. Guarda las mediciones y los pedidos de
   ayuda en PostgreSQL y entrega la página.

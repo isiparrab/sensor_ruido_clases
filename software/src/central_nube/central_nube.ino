@@ -1,11 +1,15 @@
-// esp32_railway.ino — Semáforo de ruido de la sala conectado a Railway
+// central_nube.ino — Semáforo de ruido de la sala conectado a Railway
 // Base: código final del grupo (KY-038 + semáforo + aviso por WiFi).
 // Agregado (guía Railway, sección 12): el ESP32 manda los datos al servidor.
-//   - cada 10 s el ruido y su color       -> POST /api/lecturas
-//   - cuando llega un aviso del botón       -> POST /api/asistencia
-//   - mientras el aviso está activo pregunta -> GET  /api/estado
+//   - cada 10 s el promedio del ruido y su color -> POST /api/lecturas
+//   - cuando llega un aviso del botón             -> POST /api/asistencia
+//   - mientras el aviso está activo pregunta       -> GET  /api/estado
 //     El LED de aviso queda encendido hasta que la profesora entra a la
 //     página con su clave y lo marca como atendido.
+// Cambio (23-11-2026): el LED del semáforo ya no cambia con cada medición
+//   de 50 ms. Muestra el color del PROMEDIO de los últimos 10 s, el mismo
+//   valor que se manda a la página. Así la luz cambia como máximo una vez
+//   cada 10 s y no distrae a los niños.
 // Librerías: WiFi, WebServer, HTTPClient (vienen con el core ESP32),
 //            ArduinoJson versión 7 (Library Manager).
 
@@ -23,38 +27,55 @@ const char* API_KEY     = "la-misma-clave-que-pusiste-en-railway";
 const char* DISPOSITIVO = "semaforo-sala";
 // -----------------------------------------------------------
 
-const unsigned long INTERVALO_MS = 10000;   // enviar el ruido cada 10 s
+const unsigned long INTERVALO_MS = 10000;   // cada 10 s: promedio, color del LED y envío
 
 // ---------- Código del grupo (sin cambios) ----------
 const int PIN_SENSOR = 34;
 const int VENTANA_MS = 50;
-// Pines según cómo está cableado el LED RGB del semáforo
-// (corregido: el 26 está en la pata verde, el 25 en la azul y el 27 en la roja)
-const int RGB1_R = 27;
-const int RGB1_G = 26;
-const int RGB1_B = 25;   // la pata azul del semáforo queda siempre apagada
+const int RGB1_R = 26;
+const int RGB1_G = 27;
+const int RGB1_B = 25;
 const int LED_AVISO = 13;
 
 const int UMBRAL_AMARILLO = 25;
 const int UMBRAL_ROJO     = 50;
 const unsigned long CONSULTA_MS = 3000;    // cada cuánto pregunta si ya lo atendieron
-const unsigned long REINTENTO_AVISO_MS = 5000;  // si falla el aviso, reintentar cada 5 s
 
 WebServer server(80);
 volatile bool avisoActivo = false;       // LED de aviso encendido
 
 // ---------- Variables para la nube ----------
-volatile int amplitudActual = 0;
 volatile bool avisoPendiente = false;   // falta avisar al servidor
 volatile bool avisoEnServidor = false;  // el servidor ya lo tiene registrado
 portMUX_TYPE candado = portMUX_INITIALIZER_UNLOCKED;
-long sumaAmplitud = 0;                   // para el promedio de cada 10 s
-long cuentaAmplitud = 0;
+
+// ---------- Promedio de 10 s (lo usan el LED y la página) ----------
+long sumaAmplitud = 0;                   // suma de las mediciones de 50 ms
+long cuentaAmplitud = 0;                 // cuántas mediciones lleva
+unsigned long inicioPromedio = 0;        // cuándo empezó el promedio actual
+int promedioParaEnviar = 0;              // último promedio, para la nube
+bool hayPromedioNuevo = false;           // la nube todavía no lo manda
 
 const char* nivelDe(int amplitud) {      // como lo pide el servidor
   if (amplitud <= UMBRAL_AMARILLO) return "verde";
   if (amplitud <= UMBRAL_ROJO) return "amarillo";
   return "rojo";
+}
+
+// Enciende el LED del semáforo con el color que corresponde al ruido
+void mostrarColor(int amplitud) {
+  digitalWrite(RGB1_R, LOW);
+  digitalWrite(RGB1_G, LOW);
+  digitalWrite(RGB1_B, LOW);
+
+  if (amplitud <= UMBRAL_AMARILLO) {
+    digitalWrite(RGB1_G, HIGH);
+  } else if (amplitud <= UMBRAL_ROJO) {
+    digitalWrite(RGB1_R, HIGH);
+    digitalWrite(RGB1_G, HIGH);
+  } else {
+    digitalWrite(RGB1_R, HIGH);
+  }
 }
 
 void atenderAviso() {
@@ -131,22 +152,12 @@ int consultarAviso() {
 // Tarea aparte (núcleo 0): el envío a internet tarda 1-2 s y así no
 // deja esperando al botón ni congela el semáforo.
 void tareaNube(void* parametro) {
-  unsigned long ultimoEnvio = 0;
   unsigned long ultimaConsulta = 0;
-  unsigned long ultimoIntentoAviso = 0;
-  bool primerIntento = true;
   for (;;) {
     if (WiFi.status() == WL_CONNECTED) {
-      // Avisar a Railway; si falla, esperar 5 s antes de reintentar
-      if (avisoPendiente && (primerIntento || millis() - ultimoIntentoAviso >= REINTENTO_AVISO_MS)) {
-        ultimoIntentoAviso = millis();
-        if (enviarAviso()) {
-          avisoPendiente = false;
-          avisoEnServidor = true;
-          primerIntento = true;
-        } else {
-          primerIntento = false;
-        }
+      if (avisoPendiente && enviarAviso()) {
+        avisoPendiente = false;
+        avisoEnServidor = true;
       }
       // Mientras el aviso está activo, revisar si la profesora ya lo atendió
       if (avisoEnServidor && millis() - ultimaConsulta >= CONSULTA_MS) {
@@ -157,16 +168,17 @@ void tareaNube(void* parametro) {
           Serial.println(">>> La profesora atendió el aviso: LED apagado");
         }
       }
-      if (millis() - ultimoEnvio >= INTERVALO_MS) {
-        ultimoEnvio = millis();
-        int promedio;
-        portENTER_CRITICAL(&candado);
-        promedio = cuentaAmplitud ? sumaAmplitud / cuentaAmplitud : amplitudActual;
-        sumaAmplitud = 0;
-        cuentaAmplitud = 0;
-        portEXIT_CRITICAL(&candado);
-        enviarLectura(promedio);
+      // Mandar el promedio que calculó loop() (el mismo color que muestra el LED)
+      bool enviar = false;
+      int promedio = 0;
+      portENTER_CRITICAL(&candado);
+      if (hayPromedioNuevo) {
+        promedio = promedioParaEnviar;
+        hayPromedioNuevo = false;
+        enviar = true;
       }
+      portEXIT_CRITICAL(&candado);
+      if (enviar) enviarLectura(promedio);
     }
     vTaskDelay(pdMS_TO_TICKS(100));
   }
@@ -178,6 +190,8 @@ void setup() {
   pinMode(RGB1_G, OUTPUT);
   pinMode(RGB1_B, OUTPUT);
   pinMode(LED_AVISO, OUTPUT);
+  mostrarColor(0);              // parte en verde hasta tener el primer promedio
+  inicioPromedio = millis();
 
   // CAMBIO: red propia para el botón + internet al mismo tiempo
   WiFi.mode(WIFI_AP_STA);
@@ -190,8 +204,7 @@ void setup() {
   server.on("/aviso", atenderAviso);
   server.begin();
 
-  // 16 KB de memoria para la tarea: HTTPS (TLS) necesita bastante
-  xTaskCreatePinnedToCore(tareaNube, "nube", 16384, NULL, 1, NULL, 0);
+  xTaskCreatePinnedToCore(tareaNube, "nube", 12288, NULL, 1, NULL, 0);
 }
 
 void loop() {
@@ -207,30 +220,31 @@ void loop() {
   }
   int amplitud = maximo - minimo;
 
-  // NUEVO: guardar para el promedio que se manda a Railway
-  amplitudActual = amplitud;
-  portENTER_CRITICAL(&candado);
+  // Sumar la medición al promedio de 10 s
   sumaAmplitud += amplitud;
   cuentaAmplitud++;
-  portEXIT_CRITICAL(&candado);
 
-  digitalWrite(RGB1_R, LOW);
-  digitalWrite(RGB1_G, LOW);
-  digitalWrite(RGB1_B, LOW);
+  // Cada 10 s: calcular el promedio, cambiar el LED y dejarlo listo para la nube.
+  // Entre medio el LED no cambia, aunque haya un ruido fuerte de un instante.
+  if (millis() - inicioPromedio >= INTERVALO_MS) {
+    int promedio = sumaAmplitud / cuentaAmplitud;
+    sumaAmplitud = 0;
+    cuentaAmplitud = 0;
+    inicioPromedio = millis();
 
-  if (amplitud <= UMBRAL_AMARILLO) {
-    digitalWrite(RGB1_G, HIGH);
-  } else if (amplitud <= UMBRAL_ROJO) {
-    digitalWrite(RGB1_R, HIGH);
-    digitalWrite(RGB1_G, HIGH);
-  } else {
-    digitalWrite(RGB1_R, HIGH);
+    mostrarColor(promedio);
+
+    portENTER_CRITICAL(&candado);
+    promedioParaEnviar = promedio;
+    hayPromedioNuevo = true;
+    portEXIT_CRITICAL(&candado);
+
+    Serial.printf("Promedio 10 s: %d -> %s", promedio, nivelDe(promedio));
+    Serial.println(WiFi.status() == WL_CONNECTED ? "  | Internet: si" : "  | Internet: no");
   }
 
   // El LED de aviso queda encendido hasta que la profesora lo atiende
   digitalWrite(LED_AVISO, avisoActivo ? HIGH : LOW);
 
-  Serial.print(amplitud);
-  Serial.println(WiFi.status() == WL_CONNECTED ? "  | Internet: si" : "  | Internet: no");
   delay(50);
 }

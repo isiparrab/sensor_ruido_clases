@@ -6,7 +6,7 @@ Este documento responde a cuatro criterios de la rúbrica de Software: cómo se 
 
 | Fuente | Qué mide | Frecuencia | Por qué esa frecuencia |
 |---|---|---|---|
-| Micrófono KY-038 en el ESP32 central | Amplitud del sonido de la sala (máximo menos mínimo en una ventana de 50 ms) | Una medición cada ~100 ms para el semáforo | El LED debe reaccionar al instante cuando la sala sube el volumen |
+| Micrófono KY-038 en el ESP32 central | Amplitud del sonido de la sala (máximo menos mínimo en una ventana de 50 ms) | Una medición cada ~100 ms, promediada cada 10 s | El LED y la página usan el mismo promedio de 10 s: la luz cambia como máximo cada 10 s, para no distraer a los niños con cambios a cada rato |
 | ESP32 central hacia la nube | Promedio de la amplitud de los últimos 10 s y su color | Cada 10 s | Un promedio evita que un golpe aislado (una silla, una puerta) cuente como "mucho ruido". El registro de datos cada 10 segundos es para facilitar la evaluación , en una sala de clases real, se consideran 5 o más minutos |
 | Botón del estudiante | Pedido de ayuda | Cuando se presiona | Se registra en la hora exacta que se presionó. Si ya hay uno pendiente no se duplica |
 | Profesora, desde la página | Hora en que atendió, motivo y nota | Cuando marca "Ya atendí" | Permite medir cuánto esperó el estudiante y por qué pidió ayuda |
@@ -14,7 +14,7 @@ Este documento responde a cuatro criterios de la rúbrica de Software: cómo se 
 **Cómo se evita perder datos o inventarlos**
 
 - El envío a internet corre en el otro núcleo del ESP32, así que un envío lento no congela el semáforo ni hace perder presiones del botón.
-- Si falla el aviso de un pedido de ayuda, el ESP32 reintenta cada 5 s hasta que el servidor lo confirma.
+- Si falla el aviso de un pedido de ayuda, el ESP32 lo vuelve a intentar hasta que el servidor lo confirma.
 - Si el semáforo no manda datos por más de 60 s, la página muestra **"Sin señal"** y apaga el semáforo dibujado, en vez de mostrar un color viejo como si fuera actual.
 
 ## Repositorio de datos
