@@ -50,7 +50,7 @@ Botón del estudiante ──WiFi local──► ESP32 central (pizarra) ──�
 
 - **Versión actual** v3, prototipo conectado a la nube
 - **Última actualización** 22-11-2026
-- **Estado** El semáforo, el envío de datos, la página web, el acceso de la profesora y el registro diario funcionan con el hardware real. Faltan la validación con usuarios, el modelo 3D completo, los planos, las fotos del prototipo y los documentos finales. Ver [Pendientes](#pendientes).
+- **Estado** El semáforo, el envío de datos, la página web, el acceso de la profesora y el registro diario funcionan con el hardware real. Faltan la validación con usuarios, los planos, las fotos del prototipo y los documentos finales. Ver [Pendientes](#pendientes).
 
 ## Resultados clave
 
@@ -92,7 +92,7 @@ Botón del estudiante ──WiFi local──► ESP32 central (pizarra) ──�
 | | Esquemático y BOM | [hardware/esquemas](hardware/esquemas) y [hardware/bom](hardware/bom) |
 | | Montaje físico | [hardware/fotos](hardware/fotos) (pendiente) |
 | | Diseño para la reparación | [hardware/README.md](hardware/README.md) |
-| Diseño 3D 20 % | Gemelo 3D y modelado | [diseno_3d/fusion360](diseno_3d/fusion360) (pendiente) |
+| Diseño 3D 20 % | Gemelo 3D y modelado | [diseno_3d](diseno_3d/README.md): modelo STEP con todos los componentes y renders |
 | | Renders | [diseno_3d/renders](diseno_3d/renders) |
 | | Planos técnicos | [diseno_3d/planos](diseno_3d/planos) (pendiente) |
 | Testing 10 % | Protocolo de pruebas | [testing/reportes/protocolo_pruebas.md](testing/reportes/protocolo_pruebas.md) |
@@ -137,8 +137,8 @@ Los detalles, la configuración de la base de datos y cómo correr el servidor e
 
 ### Hardware
 
-- [x] Esquema del circuito, [simulación en Wokwi](hardware/esquemas/README.md)
-- [x] Lista de componentes, [BOM](hardware/bom/README.md) con precios de referencia (total ≈ $44.000)
+- [x] Esquema del circuito, [esquemático completo v3](hardware/esquemas/README.md) y simulación en Wokwi
+- [x] Lista de componentes, [BOM](hardware/bom/README.md) con precios de referencia (total ≈ $43.000)
 - [ ] Fotos de alta resolución del prototipo armado
 
 ### Software
@@ -150,7 +150,7 @@ Los detalles, la configuración de la base de datos y cómo correr el servidor e
 
 ### Diseño 3D
 
-- [ ] Archivo 3D con todos los componentes
+- [x] Archivo 3D con todos los componentes, [Semaforo_TEI_v5_gemelo.step](diseno_3d/fusion360/Semaforo_TEI_v5_gemelo.step)
 - [x] Renders, [diseno_3d/renders](diseno_3d/renders)
 - [ ] Planos técnicos
 
@@ -168,7 +168,7 @@ Los detalles, la configuración de la base de datos y cómo correr el servidor e
 
 ## Pendientes
 
-- Fotos del prototipo armado, modelo 3D completo y planos.
+- Fotos del prototipo armado y planos.
 - Pruebas con al menos 5 usuarios reales, con evidencia.
 - Reporte final y presentación.
 

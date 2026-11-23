@@ -7,7 +7,7 @@ Encapsulados de los dos módulos del sistema: la caja del semáforo, que va junt
 | Carpeta | Contenido |
 |---|---|
 | [renders/](renders/README.md) | Renders de la caja v5 (exterior, interior, explosionado y frente) y de las versiones anteriores |
-| [fusion360/](fusion360/README.md) | Archivo 3D con todos los componentes (pendiente) |
+| [fusion360/](fusion360/README.md) | Gemelo 3D de la caja v5 con todos los componentes: [Semaforo_TEI_v5_gemelo.step](fusion360/Semaforo_TEI_v5_gemelo.step) |
 | [planos/](planos/README.md) | Planos técnicos con cotas (pendiente) |
 
 ## Caja del semáforo (versión final, v5)
@@ -22,7 +22,7 @@ Encapsulados de los dos módulos del sistema: la caja del semáforo, que va junt
 | Base del diseño | [boxes.py](https://github.com/florianfesti/boxes), generador `ElectronicsBox` (ver [FUENTES.md](../FUENTES.md)) |
 | Unión de las piezas | Uniones dentadas que encajan sin pegamento |
 | Cierre | Tapa con 4 tornillos, para poder abrirla |
-| Grosor del material | *Completar* |
+| Grosor del material | MDF de 3 mm y acrílico de 5 mm |
 | Peso aproximado | *Completar* |
 
 ### Qué va adentro
@@ -58,7 +58,6 @@ Los renders muestran la caja con los componentes en su lugar ([interior](renders
 
 ## Pendiente
 
-- Archivo 3D con todos los componentes en [fusion360/](fusion360/README.md).
 - Planos con cotas de la caja v5 en [planos/](planos/README.md).
 - Render de la carcasa final del botón con sus componentes dentro.
 - Completar los datos marcados arriba.

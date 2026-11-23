@@ -16,9 +16,9 @@ Precios de tiendas chilenas como referencia. Son **precios de referencia**, por 
 | Batería LiPo 3,7 V 500 mAh | 1 | 6.290 | [Mercado Libre](https://listado.mercadolibre.cl/bateria-3.7v-500mah) |
 | Cables dupont (pack de 40) | 1 | 2.490 | [Maxelectronica](https://maxelectronica.cl/protoboard-cables/84-cable-conexion-dupont-40-unidades-largo-20cm-hembra-hembra.html) |
 | Cargador USB de 5 V con cable | 1 | 6.990 | [Paris](https://www.paris.cl/cargador-usb-12w-con-cable-micro-usb-certificado-ps-MKX30I4R7Q.html) |
-| MDF 3 mm 40 × 40 cm + acrílico 3 mm 30 × 40 cm | 1 | 5.350 | [Sodimac](https://www.sodimac.cl/sodimac-cl/b/mdf-3mm-dimensionado) ($1.390) + [DesignTec](https://www.designtec.cl/tienda/corte-y-grabado-laser/) ($3.960) |
+| MDF 3 mm 40 × 40 cm + acrílico 5 mm 30 × 40 cm | 1 | 4.590 | [Sodimac](https://www.sodimac.cl/sodimac-cl/b/mdf-3mm-dimensionado) ($1.390) + [DesignTec](https://designtec.cl/producto/plancha-acrilico-30x40cm-5mm-transparente/) ($3.200) |
 | Tornillos M3 con tuerca | 4 | 260 | [Mechatronicstore](https://www.mechatronicstore.cl/20-piezas-tornillo-m3-con-tuerca/) (pack de 20 a $1.290) |
-| **Total** | | **43.956** | |
+| **Total** | | **43.196** | |
 
 No incluye el pulsador ni la carcasa impresa en 3D, porque no se encontró su precio. Tampoco incluye el servicio de corte láser, solo el material. 
 

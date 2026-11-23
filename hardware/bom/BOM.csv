@@ -8,7 +8,7 @@ BT1,Batería LiPo de 3.7 V,1,6290,6290,Alimentación del botón,Mercado Libre (L
 SW1,Pulsador,1,,,Pedido de ayuda,Sin precio
 W1,Cables dupont,1,2490,2490,Conexiones,Maxelectronica (pack de 40 hembra-hembra)
 PS1,Cargador USB de 5 V,1,6990,6990,Alimentación del módulo central,Paris (cargador USB con cable micro USB)
-E1,"Caja del semáforo en MDF y acrílico (corte láser, 10 x 17 x 8 cm)",1,5350,5350,Encapsulado del módulo central,Sodimac MDF 3 mm 40x40 ($1.390) + DesignTec acrílico 3 mm 30x40 ($3.960); sin costo de corte
+E1,"Caja del semáforo en MDF y acrílico (corte láser, 10 x 17 x 8 cm)",1,4590,4590,Encapsulado del módulo central,Sodimac MDF 3 mm 40x40 ($1.390) + DesignTec acrílico 5 mm 30x40 ($3.200); sin costo de corte
 E2,Carcasa del botón impresa en 3D,1,,,Encapsulado del módulo del estudiante,Sin precio
 H1,Tornillos de la tapa,4,65,260,Cierre desmontable de la caja,Mechatronicstore (pack de 20 M3 con tuerca a $1.290)
-,TOTAL,,,43956,,Precios de referencia consultados el 22-11-2026 (sin pulsador ni carcasa del botón)
+,TOTAL,,,43196,,Precios de referencia consultados el 22-11-2026 (sin pulsador ni carcasa del botón)
