@@ -26,7 +26,7 @@ La lista completa con columnas de costo está en [BOM.csv](BOM.csv). **Faltan lo
 |---|---|---|
 | Caja del semáforo, 10 × 17 × 8 cm | 1 | MDF y acrílico cortados con láser, tapa atornillada |
 | Carcasa del botón | 1 | Impresión 3D |
-| Tornillos de la tapa | Por confirmar | — |
+| Tornillos de la tapa | 4 | — |
 
 ## Versión anterior (v2)
 
