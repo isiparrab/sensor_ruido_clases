@@ -1,73 +1,64 @@
-# Diseño 3D - Documentación
+# Diseño 3D
 
-## ⚠️ REQUISITO CRÍTICO
-
-El modelo 3D debe incluir **TODOS** los componentes del prototipo:
-- ✅ Encapsulado exterior completo
-- ✅ Placa ESP32/Arduino (con dimensiones exactas)
-- ✅ Todos los sensores en posición de instalación
-- ✅ Todos los actuadores
-- ✅ Batería / fuente de alimentación
-- ✅ Cableado (routing aproximado)
-- ✅ Sistema de montaje (brackets, tornillos)
-- ✅ Orificios de ventilación (si aplica)
-
-**NO ES ACEPTABLE:** Solo el encapsulado vacío sin componentes internos
-
----
+Encapsulados de los dos módulos del sistema: la caja del semáforo, que va junto a la pizarra, y la carcasa del botón, que va en el escritorio del estudiante.
 
 ## Carpetas
 
-#### `fusion360/`
-Archivos nativos de Fusion 360 (.f3d)
+| Carpeta | Contenido |
+|---|---|
+| [renders/](renders/README.md) | Renders de la caja v5 (exterior, interior, explosionado y frente) y de las versiones anteriores |
+| [fusion360/](fusion360/README.md) | Archivo 3D con todos los componentes (pendiente) |
+| [planos/](planos/README.md) | Planos técnicos con cotas (pendiente) |
 
-#### `renders/`
-Imágenes renderizadas de alta calidad
+## Caja del semáforo (versión final, v5)
 
-#### `planos/`
-Planos técnicos con cotas
+![Caja v5, vista explosionada](renders/07_v5_explosionado.png)
 
----
+| Dato | Valor |
+|---|---|
+| Dimensiones externas | 100 × 170 × 80 mm (10 × 17 × 8 cm) |
+| Material | MDF y acrílico cortados con láser |
+| Fabricación | Cortadora láser del Laboratorio DEC UAI |
+| Base del diseño | [boxes.py](https://github.com/florianfesti/boxes), generador `ElectronicsBox` (ver [FUENTES.md](../FUENTES.md)) |
+| Unión de las piezas | Uniones dentadas que encajan sin pegamento |
+| Cierre | Tapa con 4 tornillos, para poder abrirla |
+| Grosor del material | *Completar* |
+| Peso aproximado | *Completar* |
 
-## Especificaciones
+### Qué va adentro
 
-**Software:** Autodesk Fusion 360  
-**Unidades:** Milímetros (mm)  
-**Escala:** 1:1 (dimensiones reales)
+Los renders muestran la caja con los componentes en su lugar ([interior](renders/06_v5_interior.png)):
 
-**Dimensiones externas:** [X mm × Y mm × Z mm]  
-**Peso estimado:** [XXX gramos]  
-**Material:** [PLA, ABS, PETG, etc.]
+| Componente | Ubicación |
+|---|---|
+| ESP32 DevKit | Al fondo de la caja, con el USB hacia la salida del cable |
+| Micrófono KY-038 | Frente al hoyo del micrófono, para captar el sonido de la sala |
+| LED RGB del semáforo | Soporte superior, detrás de la ventana de arriba |
+| LED azul de ayuda | Soporte inferior, detrás de la ventana de abajo |
+| Ventanas de acrílico | Difuminan la luz para que sea tenue y no moleste |
+| Cable USB | Sale por un costado hacia el cargador |
+| Orejas del fondo | Permiten colgar la caja junto a la pizarra |
 
----
+### Consideraciones de diseño
 
-## Consideraciones de Diseño
+- [x] Acceso al USB para alimentar y reprogramar sin abrir la caja
+- [x] Protección de los componentes dentro de la caja
+- [x] Fácil acceso para mantenimiento: tapa atornillada y piezas sin pegamento
+- [x] Luz tenue a través del acrílico, para no sobreestimular a los estudiantes
+- [x] Hoyo frente al micrófono, para que la caja no tape el sonido
 
-### Funcionales
-- [ ] Acceso a puertos USB/alimentación
-- [ ] Ventilación adecuada
-- [ ] Protección de componentes
-- [ ] Fácil acceso para mantenimiento
-- [ ] Resistencia a condiciones ambientales
+## Carcasa del botón
 
-### Fabricación
-- [ ] Imprimible sin soportes excesivos
-- [ ] Tolerancias de ensamble (+0.2mm)
-- [ ] Grosor de pared mínimo 2mm
-- [ ] Sin ángulos imposibles (overhangs <45°)
+| Dato | Valor |
+|---|---|
+| Fabricación | Impresión 3D |
+| Qué va adentro | ESP32-S3 SuperMini, batería LiPo de 3,7 V y pulsador |
+| Dimensiones externas | *Completar* |
+| Material, impresora y tiempo de impresión | *Completar* |
 
----
+## Pendiente
 
-## Configuración de Impresión 3D (si fue utilizada)
-
-**Impresora:** [Modelo]  
-**Material:** [PLA/ABS/PETG]  
-**Calidad de capa:** 0.2mm  
-**Relleno:** 20-30%  
-**Soportes:** [Sí/No - dónde]  
-**Temperatura nozzle:** [°C]  
-**Temperatura cama:** [°C]  
-**Velocidad:** [mm/s]
-
-**Tiempo estimado de impresión:** [X horas]  
-**Peso de material:** [X gramos]
+- Archivo 3D con todos los componentes en [fusion360/](fusion360/README.md).
+- Planos con cotas de la caja v5 en [planos/](planos/README.md).
+- Render de la carcasa final del botón con sus componentes dentro.
+- Completar los datos marcados arriba.

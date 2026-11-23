@@ -61,7 +61,7 @@ Si participan niños, debe ser con autorización de su apoderado y del colegio, 
 
 ## Validación contra el problema
 
-El problema es la desregulación de niños con TEA por ruido sobre su umbral de tolerancia. El prototipo se considera validado si:
+El problema es el ruido excesivo en la sala, que afecta la concentración y el bienestar de todos los estudiantes, en especial de quienes tienen hipersensibilidad auditiva, como muchos niños con TEA, y la falta de una forma de pedir ayuda en silencio. El prototipo se considera validado si:
 
 1. La profesora nota el aumento de ruido o el pedido de ayuda **sin que nadie tenga que hablar** (tareas y encuesta).
 2. El pedido de ayuda llega y se atiende en poco tiempo (T3, T4, T5 y la espera promedio del registro).
