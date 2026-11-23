@@ -141,12 +141,6 @@ Los detalles, la configuración de la base de datos y cómo correr el servidor e
 - [x] Lista de componentes, [BOM](hardware/bom/README.md) con precios de referencia (total ≈ $42.800)
 - [x] Fotos de alta resolución del prototipo armado
 
-### Software
-
-- [x] Código comentado, [software/src](software/src) y [software/web](software/web)
-- [x] Librerías documentadas, [software/librerias](software/librerias/README.md) y [FUENTES.md](FUENTES.md)
-- [x] Manual de instalación, [software/README.md](software/README.md)
-- [x] Fotos de alta resolución del prototipo armado, [hardware/fotos](hardware/fotos)
 
 ### Software
 
@@ -175,7 +169,7 @@ Los detalles, la configuración de la base de datos y cómo correr el servidor e
 
 ## Pendientes
 - Reporte final (entrega final)
-- 
+  
 ## Licencia
 
 Este proyecto se desarrolló como parte del curso TEI201, Taller de Diseño en Ingeniería, de la Facultad de Ingeniería y Ciencias de la Universidad Adolfo Ibáñez. El código se distribuye bajo licencia MIT, ver [LICENSE](LICENSE).
