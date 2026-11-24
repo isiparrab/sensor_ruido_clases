@@ -6,7 +6,7 @@ Encapsulados de los dos módulos del sistema: la caja del semáforo, que va junt
 
 | Carpeta | Contenido |
 |---|---|
-| [renders/](renders/README.md) | Renders de la caja v5 (exterior, interior, explosionado y frente) y de las versiones anteriores |
+| [renders/](renders/README.md) | Renders de la caja v5 (exterior, interior, explosionado y frente), de la carcasa del botón y de las versiones anteriores |
 | [fusion360/](fusion360/README.md) | Gemelo 3D de la caja v5 con todos los componentes: [Semaforo_TEI_v5_gemelo.step](fusion360/Semaforo_TEI_v5_gemelo.step) |
 | [planos/](planos/README.md) | Planos con cotas de la caja v5: [Planos_Semaforo_TEI_v5.pdf](planos/Planos_Semaforo_TEI_v5.pdf) |
 
@@ -51,7 +51,7 @@ Los renders muestran la caja con los componentes en su lugar ([interior](renders
 
 | Dato | Valor |
 |---|---|
-| Fabricación | Impresión 3D |
+| Fabricación | Impresión 3D, diseñada en Fusion 360 ([renders](renders/README.md#carcasa-del-botón-fusion-360)) |
 | Qué va adentro | ESP32-S3 SuperMini, batería LiPo de 3,7 V y pulsador |
 | Dimensiones externas | *Completar* |
 | Tiempo de impresión | Aproximadamente 1 hora |
@@ -59,5 +59,4 @@ Los renders muestran la caja con los componentes en su lugar ([interior](renders
 
 ## Pendiente
 
-- Render de la carcasa final del botón con sus componentes dentro.
 - Completar los datos marcados arriba.

@@ -19,6 +19,19 @@ Caja de 10 × 17 × 8 cm cortada con láser, con el ESP32, el micrófono, los so
 
 ![Frente v5](08_v5_frente.png)
 
+## Carcasa del botón (Fusion 360)
+
+Carcasa impresa en 3D para la ESP32-S3 SuperMini, la batería y el pulsador.
+
+| Archivo | Vista |
+|---|---|
+| [09_boton_fusion_exterior.jpg](09_boton_fusion_exterior.jpg) | Exterior, con el hoyo del pulsador |
+| [10_boton_fusion_interior.jpg](10_boton_fusion_interior.jpg) | Interior, con la ranura de la tapa |
+
+![Botón exterior](09_boton_fusion_exterior.jpg)
+
+![Botón interior](10_boton_fusion_interior.jpg)
+
 ## Versiones anteriores (Onshape)
 
 | Archivo | Vista |
@@ -36,6 +49,3 @@ Caja de 10 × 17 × 8 cm cortada con láser, con el ESP32, el micrófono, los so
 
 ![Semáforo interior, otra vista](04_semaforo_interior.png)
 
-## Pendiente
-
-- Render de la carcasa final del botón impresa en 3D, con la ESP32-S3, la batería y el pulsador dentro.

@@ -1,39 +1,17 @@
-# Fotografías del Prototipo
+# Fotos del prototipo
 
-## Requisitos de las Fotos
+Fotos del prototipo final (v3) armado y funcionando en la sala.
 
-### Calidad
-- **Resolución mínima:** 1920x1080 px
-- **Formato:** JPG o PNG
-- **Iluminación:** Buena iluminación natural o artificial uniforme
-- **Fondo:** Neutro y sin distracciones
+| Archivo | Qué muestra |
+|---|---|
+| [01_semaforo_encendido.jpg](01_semaforo_encendido.jpg) | Caja del semáforo cerrada y encendida en verde, alimentada por USB |
+| [02_interior_abierto.jpg](02_interior_abierto.jpg) | Caja sin tapa: ESP32, micrófono KY-038 y los dos LED RGB en sus soportes |
+| [03_boton_estudiante.jpg](03_boton_estudiante.jpg) | Botón del estudiante en su carcasa impresa en 3D, con el pulsador rojo |
 
-### Tomas Requeridas
+![Semáforo encendido](01_semaforo_encendido.jpg)
 
-1. **Vista general del prototipo completo**
-   - `01_vista_general.jpg`
+![Interior de la caja](02_interior_abierto.jpg)
 
-2. **Vista del circuito interno**
-   - `02_circuito_interno.jpg`
+![Botón del estudiante](03_boton_estudiante.jpg)
 
-3. **Detalle de conexiones críticas**
-   - `03_detalle_conexiones.jpg`
-
-4. **Vista de sensores montados**
-   - `04_sensores.jpg`
-
-5. **Vista de actuadores**
-   - `05_actuadores.jpg`
-
-6. **Encapsulado cerrado (si aplica)**
-   - `06_encapsulado_cerrado.jpg`
-
-7. **Prototipo en contexto de uso**
-   - `07_contexto_uso.jpg`
-
----
-
-## Nomenclatura
-- Numerar según orden: `01_`, `02_`, etc.
-- Usar nombres descriptivos
-- Incluir versión si hay múltiples: `v3_01_vista_general.jpg`
+Más fotos de las pruebas con usuarios en [testing/evidencias](../../testing/evidencias) y [testing/reportes](../../testing/reportes).

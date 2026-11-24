@@ -8,7 +8,7 @@ Esta carpeta documenta el hardware del prototipo: por qué se eligió cada compo
 |---|---|
 | [esquemas/](esquemas/README.md) | Esquemático completo v3 y simulación en Wokwi |
 | [bom/](bom/README.md) | Lista de materiales y conexiones ([BOM.csv](bom/BOM.csv)) |
-| [fotos/](fotos/README.md) | Fotos del prototipo armado (pendiente) |
+| [fotos/](fotos/README.md) | Fotos del prototipo armado |
 
 ## Módulos
 
