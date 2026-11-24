@@ -23,7 +23,6 @@ Encapsulados de los dos módulos del sistema: la caja del semáforo, que va junt
 | Unión de las piezas | Uniones dentadas que encajan sin pegamento |
 | Cierre | Tapa con 4 tornillos, para poder abrirla |
 | Grosor del material | MDF de 3 mm y acrílico de 5 mm |
-| Peso aproximado | *Completar* |
 
 ### Qué va adentro
 
@@ -53,10 +52,7 @@ Los renders muestran la caja con los componentes en su lugar ([interior](renders
 |---|---|
 | Fabricación | Impresión 3D, diseñada en Fusion 360 ([renders](renders/README.md#carcasa-del-botón-fusion-360)) |
 | Qué va adentro | ESP32-S3 SuperMini, batería LiPo de 3,7 V y pulsador |
-| Dimensiones externas | *Completar* |
+| Dimensiones externas | 52,5 × 42,5 × 30,5 mm (largo × ancho × alto), ver [plano](planos/Plano_Boton_Estudiante.pdf) |
 | Tiempo de impresión | Aproximadamente 1 hora |
-| Material e impresora | *Completar* |
+| Material | PLA, impresión 3D. Archivo: [Boton_Estudiante.f3d](fusion360/Boton_Estudiante.f3d) |
 
-## Pendiente
-
-- Completar los datos marcados arriba.
