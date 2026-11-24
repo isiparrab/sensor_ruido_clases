@@ -10,6 +10,7 @@
 //   de 50 ms. Muestra el color del PROMEDIO de los últimos 10 s, el mismo
 //   valor que se manda a la página. Así la luz cambia como máximo una vez
 //   cada 10 s y no distrae a los niños.
+// Umbrales finales (23-11-2026): 12 / 20, calibrados en la sala con el promedio de 10 s.
 // Librerías: WiFi, WebServer, HTTPClient (vienen con el core ESP32),
 //            ArduinoJson versión 7 (Library Manager).
 
@@ -20,7 +21,7 @@
 #include <ArduinoJson.h>
 
 // ---------- CAMBIAR ESTOS DATOS (como en la guía) ----------
-const char* WIFI_SSID   = "NOMBRE_DEL_HOTSPOT";    // red CON internet, 2.4 GHz
+const char* WIFI_SSID   = "iPhone";       // red CON internet, 2.4 GHz
 const char* WIFI_PASS   = "CLAVE_DEL_HOTSPOT";
 const char* SERVER_URL  = "https://semaforoenlinea.up.railway.app";   // sin "/" al final
 const char* API_KEY     = "la-misma-clave-que-pusiste-en-railway";
@@ -37,8 +38,8 @@ const int RGB1_G = 27;
 const int RGB1_B = 25;
 const int LED_AVISO = 13;
 
-const int UMBRAL_AMARILLO = 25;
-const int UMBRAL_ROJO     = 50;
+const int UMBRAL_AMARILLO = 12;
+const int UMBRAL_ROJO     = 20 ;
 const unsigned long CONSULTA_MS = 3000;    // cada cuánto pregunta si ya lo atendieron
 
 WebServer server(80);

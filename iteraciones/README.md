@@ -15,7 +15,7 @@ iteraciones/
 |---|---|---|---|
 | Fecha | Septiembre a octubre de 2026 | 26-10-2026 (Avance 2) | 22-11-2026 |
 | Sensor | KY-038 | KY-038 | KY-038 |
-| Semáforo | LED RGB, umbrales sin calibrar (15 / 1000) | LED RGB, umbrales calibrados 17 / 42 | LED RGB con pines corregidos, umbrales 25 / 50 en el código con nube |
+| Semáforo | LED RGB, umbrales sin calibrar (15 / 1000) | LED RGB, umbrales calibrados 17 / 42 | LED RGB con pines corregidos, umbrales 12 / 20 calibrados en la sala con el promedio de 10 s |
 | Pedido de ayuda | — | Botón con ESP32-C3 y luz blanca (LED RGB #2) | Botón con ESP32-S3 SuperMini a batería (LED RGB que confirma el aviso) y luz azul, separada del semáforo |
 | Conectividad | Hotspot de un Android | Red WiFi propia del ESP32 (sin internet) | Red propia para el botón **e** internet por hotspot al mismo tiempo |
 | Dónde se ve la información | Monitor Serie | Página local en `192.168.4.1` (solo conectado a la red del ESP32) | Página pública en Railway, desde cualquier celular o computador |

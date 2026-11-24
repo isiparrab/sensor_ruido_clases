@@ -30,5 +30,5 @@ Comprobar que el prototipo mide bien el ruido, que el pedido de ayuda llega y se
 ## Análisis inicial
 
 - El envío funciona, pero no es continuo: 4 cortes en una hora. Probablemente se deben a la señal del hotspot. En las pruebas en sala conviene dejar el celular cerca del semáforo y repetir la prueba T6.
-- En esa hora la sala estuvo con ruido alto (amarillo o rojo) el 99 % del tiempo. Esto puede indicar que los umbrales del código con nube (25 / 50) son bajos para el lugar de la prueba. Hay que revisarlos en una sala real (prueba T1).
+- En esa hora la sala estuvo con ruido alto (amarillo o rojo) el 99 % del tiempo. Esto puede indicar que los umbrales del código con nube (25 / 50) son bajos para el lugar de la prueba. Hay que revisarlos en una sala real (prueba T1). **Después de las pruebas con usuarios, los umbrales finales quedaron en 12 / 20**, calibrados en la sala con el promedio de 10 s (ver [pruebas_usuarios.md](reportes/pruebas_usuarios.md)).
 - Los dos pedidos de ayuda llegaron después de 10 minutos con ruido alto. Con solo dos casos no se puede concluir nada, pero muestra que el sistema ya puede calcular esa relación.

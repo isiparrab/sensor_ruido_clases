@@ -19,18 +19,18 @@
 El KY-038 entrega una señal analógica (pin AO) que el ESP32 lee en el GPIO 34, un pin ADC1 que sigue funcionando con el WiFi encendido. Durante una ventana de 50 ms se guarda el valor máximo y el mínimo, y la **amplitud** es la diferencia entre ambos. Una sala más ruidosa da una amplitud mayor.
 
 ```
-amplitud <= 25          → verde
-25 < amplitud <= 50     → amarillo (rojo + verde)
-amplitud > 50           → rojo
+promedio <= 12          → verde
+12 < promedio <= 20     → amarillo (rojo + verde)
+promedio > 20           → rojo
 ```
 
-Los umbrales se calibraron mirando la amplitud en el Monitor Serie. Son unidades del conversor del ESP32 (0 a 4095), **no decibeles**: el KY-038 no está calibrado para medir dB.
+El color se decide con el **promedio de las amplitudes de los últimos 10 s**, el mismo valor que se manda a la página. Los umbrales se calibraron en la sala mirando ese promedio en el Monitor Serie. Son unidades del conversor del ESP32 (0 a 4095), **no decibeles**: el KY-038 no está calibrado para medir dB.
 
 ## Diferencias entre versiones
 
 | Dato | v2 (`central.ino` + botón v2) | v3, final (`central_nube.ino` + botón v3) |
 |---|---|---|
-| Umbrales amarillo / rojo | 17 / 42 | 25 / 50 |
+| Umbrales amarillo / rojo | 17 / 42 (con cada medición de 50 ms) | 12 / 20 (con el promedio de 10 s) |
 | Pines del LED RGB del semáforo | R 25, G 26, B 27 | R 26, G 27, B 25 (corregido porque los colores salían cambiados en el prototipo) |
 | Luz de ayuda | LED RGB #2 en **blanco** (pines 12, 13 y 14) | LED **azul** en el pin 13 |
 | Red WiFi para el botón | `SemaforoAula` | `AulaRuido` |
